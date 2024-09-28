@@ -28,6 +28,9 @@ export const api = createApi({
       query: (credentials) => ({
         url: "login",
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: credentials,
       }),
     }),
