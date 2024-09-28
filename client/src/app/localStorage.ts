@@ -10,7 +10,11 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state: any) => {
+interface AppState {
+  [key: string]: any; // Replace with more specific types if possible
+}
+
+export const saveState = (state: AppState) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("state", serializedState);
