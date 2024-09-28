@@ -9,6 +9,9 @@ const auth_1 = require("../controllers/auth");
 const auth_2 = __importDefault(require("../middleware/auth"));
 const router = express_1.default.Router();
 router.post("/login", auth_1.login);
+router.get("/about", (req, res) => {
+    res.status(200).json({ message: "ABOUT" });
+});
 router.get("/dashboard", auth_2.default, (req, res) => {
     res.status(200).json({ message: "Welcome to the dashboard!" });
 });
