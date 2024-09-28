@@ -17,7 +17,7 @@ declare module "express-serve-static-core" {
 /* CONFIGURATIONS */
 dotenv.config();
 const app = express();
-app.use(express.json());
+
 app.use(helmet());
 //app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
@@ -31,6 +31,7 @@ app.use(
     credentials: true, // Allow credentials
   })
 );
+app.use(express.json());
 /* dsadsaROUTES */
 app.use("/", authRoutes); // http://localhost:8000/dashboard
 // app.use("/products", productRoutes); // http://localhost:8000/products
