@@ -10,15 +10,17 @@ export const loadState = () => {
   }
 };
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface AppState {
-  [key: string]: any; // Replace with more specific types if possible
+  [key: string]: any; // Thay thế bằng các kiểu cụ thể nếu có thể
 }
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 export const saveState = (state: AppState) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("state", serializedState);
   } catch {
-    // Ignore write errors
+    // Bỏ qua lỗi ghi
   }
 };
