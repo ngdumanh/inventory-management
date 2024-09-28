@@ -23,8 +23,14 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
-
+//app.use(cors());
+app.use(
+  cors({
+    origin: "https://main.d3sxdwkjlgevbh.amplifyapp.com", // Replace with your frontend URL
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // Allow credentials
+  })
+);
 /* dsadsaROUTES */
 app.use("/", authRoutes); // http://localhost:8000/dashboard
 // app.use("/products", productRoutes); // http://localhost:8000/products
