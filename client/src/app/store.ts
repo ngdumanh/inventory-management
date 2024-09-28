@@ -2,16 +2,6 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { loadState, saveState } from "./localStorage";
 import globalReducer from "@/state";
 import { api } from "@/state/api";
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
 
 const preloadedState = loadState();
 

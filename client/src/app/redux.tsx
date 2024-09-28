@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState, useMemo, useRef } from "react";
+import { ReactNode, useMemo } from "react";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
   TypedUseSelectorHook,
@@ -8,10 +8,7 @@ import {
 } from "react-redux";
 import globalReducer from "@/state";
 import { api } from "@/state/api";
-import { setupListeners } from "@reduxjs/toolkit/query";
-
 import {
-  persistStore,
   persistReducer,
   FLUSH,
   REHYDRATE,
@@ -20,11 +17,9 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import { PersistGate } from "redux-persist/integration/react";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
-import store from "./store";
-import { loadState, saveState } from "./localStorage";
+import { loadState } from "./localStorage";
 
 /* REDUX PERSISTENCE */
 const createNoopStorage = () => {

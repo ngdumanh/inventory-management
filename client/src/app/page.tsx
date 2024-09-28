@@ -1,7 +1,4 @@
 "use client";
-import Dashboard from "@/app/dashboard/page";
-import LoginPage from "./login/page";
-import SignupPage from "./signup/page";
 import StoreProvider from "./redux";
 import { Inter } from "next/font/google";
 import { useMemo } from "react";
@@ -14,15 +11,8 @@ export default async function Home() {
   return (
     <StoreProvider>
       <>
-        <main className={interClassName}>dsadas</main>
+        <main className={interClassName}>HOME</main>
       </>
     </StoreProvider>
   );
 }
-
-// const Home = () => (
-//   <StoreProvider>
-//     <div className="flex">dasdasdas</div>
-//   </StoreProvider>
-// );
-// export default Home;
