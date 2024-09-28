@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
 const withAuth = (WrappedComponent: React.ComponentType) => {
-  const Wrapper = (props: any) => {
+  const Wrapper = (props: React.ComponentProps<typeof WrappedComponent>) => {
     const router = useRouter();
 
     useEffect(() => {
