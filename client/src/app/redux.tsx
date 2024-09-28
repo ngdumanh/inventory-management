@@ -24,13 +24,13 @@ import { loadState } from "./localStorage";
 /* REDUX PERSISTENCE */
 const createNoopStorage = () => {
   return {
-    getItem(_key: any) {
+    getItem(_key: string) {
       return Promise.resolve(null);
     },
-    setItem(_key: any, value: any) {
+    setItem(_key: string, value: string) {
       return Promise.resolve(value);
     },
-    removeItem(_key: any) {
+    removeItem(_key: string) {
       return Promise.resolve();
     },
   };
@@ -76,28 +76,6 @@ export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 /* PROVIDER */
-// export default function StoreProvider({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) {
-//   const storeRef = useRef<AppStore>();
-//   if (!storeRef.current) {
-//     console.log("Creating store......");
-//     storeRef.current = makeStore();
-//     setupListeners(storeRef.current.dispatch);
-//   }
-//   const persistor = persistStore(storeRef.current);
-
-//   return (
-//     <Provider store={storeRef.current}>
-//       <PersistGate loading={null} persistor={persistor}>
-//         {children}
-//       </PersistGate>
-//     </Provider>
-//   );
-// }
-
 interface StoreProviderProps {
   children: ReactNode;
 }
