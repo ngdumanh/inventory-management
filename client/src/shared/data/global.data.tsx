@@ -246,7 +246,7 @@ export const footerData2: FooterProps = {
     },
     {
       title: 'Email',
-      texts: ['Office: admin@synclista.com', 'Site: https://www.synclista.com/'],
+      texts: ['Office: admin@synclista.com', 'Site: https://www.synclista.com'],
     },
   ],
   socials: [
