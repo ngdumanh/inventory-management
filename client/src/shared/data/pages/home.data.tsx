@@ -517,7 +517,7 @@ export const teamHome: TeamProps = {
       ],
     },
     {
-      name: 'Jose Martin',
+      name: 'Javad Ahmed',
       occupation: 'Marketing Tech',
       image: {
         src: 'https://s3-inventory-management-nnb.s3.ap-southeast-1.amazonaws.com/2.jpg',
