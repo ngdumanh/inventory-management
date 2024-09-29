@@ -6,8 +6,8 @@ addons.setConfig({
     base: 'light',
 
     // Logo
-    brandTitle: 'TailNext',
-    brandUrl: 'https://github.com/onwidget/tailnext',
+    brandTitle: 'SyncLista',
+    brandUrl: 'https://www.synclista.com/',
     brandTarget: '_blank',
   }),
 });

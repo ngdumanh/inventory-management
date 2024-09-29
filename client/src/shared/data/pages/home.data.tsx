@@ -64,7 +64,7 @@ export const heroHome: HeroProps = {
   },
   image: {
     src: heroImg,
-    alt: 'Hero TailNext',
+    alt: 'SyncLista',
   },
 };
 

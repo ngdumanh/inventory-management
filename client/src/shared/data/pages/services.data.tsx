@@ -28,12 +28,12 @@ export const heroServices: HeroProps = {
     'Donec aliquam pharetra nibh quis vestibulum. Praesent hendrerit sem at lacus ullamcorper egestas. Morbi lacinia ipsum in nulla gravida, ac sagittis turpis pretium. ',
   callToAction: {
     text: 'Start Exploring',
-    href: 'https://github.com/onwidget/tailnext',
+    href: 'https://www.synclista.com/',
     targetBlank: true,
   },
   image: {
     src: heroImg,
-    alt: 'Hero TailNext',
+    alt: 'SyncLista',
   },
 };
 

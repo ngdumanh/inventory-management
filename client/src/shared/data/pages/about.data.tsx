@@ -53,7 +53,7 @@ export const hero2About: HeroProps = {
   },
   image: {
     src: hero2Img,
-    alt: 'Hero TailNext',
+    alt: 'SyncLista',
   },
 };
 
