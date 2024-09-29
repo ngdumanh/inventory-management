@@ -58,10 +58,10 @@ export const headerData: HeaderProps = {
         },
       ],
     },
-    {
-      label: 'Blog',
-      href: '/blog',
-    },
+    // {
+    //   label: 'Blog',
+    //   href: '/blog',
+    // },
     {
       label: 'Contact',
       href: '/contact',

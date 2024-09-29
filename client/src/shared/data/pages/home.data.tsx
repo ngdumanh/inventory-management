@@ -39,7 +39,7 @@ import gasImg from '~/assets/images/gas.jpg';
 
 // Hero data on Home page *******************
 export const heroHome: HeroProps = {
-  title: <>Say Goodbye to Manual Work – SyncLista Automates Your TikTok Shop for Maximum Efficiency!</>,
+  title: <>Say Goodbye to Manual Work - Automate Your TikTok Shop for Maximum Efficiency!</>,
   subtitle: (
     <>
       <span className="hidden md:inline">
@@ -517,11 +517,11 @@ export const teamHome: TeamProps = {
       ],
     },
     {
-      name: 'Toby Foster',
+      name: 'Jose Martin',
       occupation: 'Marketing Tech',
       image: {
         src: 'https://images.unsplash.com/photo-1614583224978-f05ce51ef5fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2172&q=80',
-        alt: 'Toby Foster',
+        alt: 'Jose Martin',
       },
       items: [
         {
