@@ -4,7 +4,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
-import authRoutes from "./routes/auth";
 
 declare module "express-serve-static-core" {
   interface Request {
@@ -13,11 +12,12 @@ declare module "express-serve-static-core" {
 }
 
 // ROUTE IMPORTS
+import authRoutes from "./routes/auth";
 
 /* CONFIGURATIONS */
 dotenv.config();
 const app = express();
-
+app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
@@ -31,8 +31,7 @@ app.use(cors());
 //     credentials: true, // Allow credentials
 //   })
 // );
-app.use(express.json());
-/* dsadsaROUTES */
+
 app.use("/", authRoutes); // http://localhost:8000/dashboard
 // app.use("/products", productRoutes); // http://localhost:8000/products
 // app.use("/users", userRoutes); // http://localhost:8000/users
