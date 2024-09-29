@@ -242,7 +242,7 @@ export const footerData2: FooterProps = {
     },
     {
       title: 'Phone',
-      texts: ['Reception: +1 (564) 201-8560', 'Office: +1 (564) 201-8560'],
+      texts: ['Reception: +1 (229)-508-9455', 'Office: +1 (229)-508-9455'],
     },
     {
       title: 'Email',

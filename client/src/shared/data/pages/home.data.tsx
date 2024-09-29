@@ -611,7 +611,7 @@ export const contactHome: ContactProps = {
     },
     {
       title: 'Contact',
-      description: ['Mobile: +1 (564) 201-8560', 'Mail: admin@synclista.com'],
+      description: ['Mobile: +1 (229)-508-9455', 'Mail: admin@synclista.com'],
       icon: IconPhoneCall,
     },
     {
