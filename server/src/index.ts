@@ -19,18 +19,18 @@ dotenv.config();
 const app = express();
 
 app.use(helmet());
-//app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(cors());
-app.use(
-  cors({
-    origin: "https://main.d3sxdwkjlgevbh.amplifyapp.com", // Replace with your frontend URL
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // Allow credentials
-  })
-);
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: "https://main.d3sxdwkjlgevbh.amplifyapp.com", // Replace with your frontend URL
+//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     credentials: true, // Allow credentials
+//   })
+// );
 app.use(express.json());
 /* dsadsaROUTES */
 app.use("/", authRoutes); // http://localhost:8000/dashboard
