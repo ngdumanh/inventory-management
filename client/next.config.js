@@ -13,12 +13,14 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: 's3-inventory-management-nnb.s3.ap-southeast-1.amazonaws.com',
+        port: '',
+        pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'source.unsplash.com',
+        hostname: 'images.unsplash.com',
       },
     ],
-  }
+  },
 };

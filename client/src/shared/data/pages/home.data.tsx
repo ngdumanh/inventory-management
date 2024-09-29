@@ -30,7 +30,7 @@ import {
 } from '../../types';
 import heroImg from '~/assets/images/hero.jpg';
 import printifyLogo from '~/assets/images/printify.png';
-import spredShirtLogo from '~/assets/images/spreadshirt.png';
+import spreadShirtLogo from '~/assets/images/spreadshirt.png';
 import printfulLogo from '~/assets/images/printful.png';
 import gearmentLogo from '~/assets/images/gearment.png';
 import cameraFrontImg from '~/assets/images/camera-front.jpg';
@@ -74,24 +74,24 @@ export const socialProofHome: SocialProofProps = {
   hasBackground: false,
   images: [
     {
-      link: 'https://nextjs.org/',
+      link: 'https://printify.com/',
       src: printifyLogo,
-      alt: 'NextJs Logo',
+      alt: 'printify Logo',
     },
     {
-      link: 'https://react.dev/',
-      src: spredShirtLogo,
-      alt: 'React Logo',
+      link: 'https://www.spreadshirt.com/',
+      src: spreadShirtLogo,
+      alt: 'spreadShirt Logo',
     },
     {
-      link: 'https://tailwindcss.com/',
+      link: 'https://www.printful.com/',
       src: printfulLogo,
-      alt: 'Tailwind CSS Logo',
+      alt: 'printful Logo',
     },
     {
-      link: 'https://www.typescriptlang.org/',
+      link: 'https://gearment.com/',
       src: gearmentLogo,
-      alt: 'Typescript Logo',
+      alt: 'gearment Logo',
     },
   ],
 };
@@ -495,7 +495,7 @@ export const teamHome: TeamProps = {
       name: 'Toni Pham LX',
       occupation: 'SEO Consultant',
       image: {
-        src: 'https://images.unsplash.com/photo-1637858868799-7f26a0640eb6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
+        src: 'https://s3-inventory-management-nnb.s3.ap-southeast-1.amazonaws.com/3.jpg',
         alt: 'Cindy Belcher',
       },
       items: [
@@ -520,7 +520,7 @@ export const teamHome: TeamProps = {
       name: 'Jose Martin',
       occupation: 'Marketing Tech',
       image: {
-        src: 'https://images.unsplash.com/photo-1614583224978-f05ce51ef5fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2172&q=80',
+        src: 'https://s3-inventory-management-nnb.s3.ap-southeast-1.amazonaws.com/2.jpg',
         alt: 'Jose Martin',
       },
       items: [
@@ -545,7 +545,7 @@ export const teamHome: TeamProps = {
       name: 'Clark Bourne',
       occupation: 'Content Manager',
       image: {
-        src: 'https://images.unsplash.com/photo-1639628735078-ed2f038a193e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80',
+        src: 'https://s3-inventory-management-nnb.s3.ap-southeast-1.amazonaws.com/4.jpg',
         alt: 'Clark Bourne',
       },
       items: [
@@ -570,7 +570,7 @@ export const teamHome: TeamProps = {
       name: 'Bella Chase',
       occupation: 'UX Designer',
       image: {
-        src: 'https://images.unsplash.com/photo-1628260412297-a3377e45006f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80',
+        src: 'https://s3-inventory-management-nnb.s3.ap-southeast-1.amazonaws.com/1.jpg',
         alt: 'Bella Chase',
       },
       items: [
