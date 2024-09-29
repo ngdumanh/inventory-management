@@ -1,10 +1,11 @@
 module.exports.SITE = {
-  name: 'TailNext',
+  name: 'SyncLista',
 
-  origin: 'https://tailnext.vercel.app',
+  origin: 'https://www.synclista.com/',
   basePathname: '/',
   trailingSlash: false,
 
-  title: 'TailNext — Your website with Next.js + Tailwind CSS',
-  description: 'TailNext is a free and ready to start template to make your website using Next.js and Tailwind CSS.',
+  title: 'SyncLista — Automate listings, schedule posts, and manage TikTok Shop accounts effortlessly.',
+  description:
+    'SyncLista simplifies TikTok Shop management by automating product listings, scheduling posts, and handling multiple accounts with ease. Boost your sales and streamline your workflow with this all-in-one tool for sellers.',
 };

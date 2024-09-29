@@ -29,37 +29,32 @@ import {
   TestimonialsProps,
 } from '../../types';
 import heroImg from '~/assets/images/hero.jpg';
-import nextJsLogo from '~/assets/images/nextjs-logo.png';
-import reactLogo from '~/assets/images/react-logo.png';
-import tailwindCssLogo from '~/assets/images/tailwind-css-logo.png';
-import typescriptLogo from '~/assets/images/typescript-logo.png';
+import printifyLogo from '~/assets/images/printify.png';
+import spredShirtLogo from '~/assets/images/spreadshirt.png';
+import printfulLogo from '~/assets/images/printful.png';
+import gearmentLogo from '~/assets/images/gearment.png';
 import cameraFrontImg from '~/assets/images/camera-front.jpg';
 import cameraBackImg from '~/assets/images/camera-back.jpg';
 import gasImg from '~/assets/images/gas.jpg';
 
 // Hero data on Home page *******************
 export const heroHome: HeroProps = {
-  title: (
-    <>
-      Free template for <span className="hidden md:inline">starts a website using</span> <span>Next.js</span> +{' '}
-      <span className="sm:whitespace-nowrap">Tailwind CSS</span>
-    </>
-  ),
+  title: <>Say Goodbye to Manual Work – SyncLista Automates Your TikTok Shop for Maximum Efficiency!</>,
   subtitle: (
     <>
       <span className="hidden md:inline">
         <span className="font-semibold underline decoration-primary-600 decoration-wavy decoration-1 underline-offset-2">
-          TailNext
+          SyncLista
         </span>{' '}
-        is a production ready template to start your new website using <em>Next.js</em> + <em>Tailwind CSS</em>.
+        simplifies TikTok Shop management by automating product listings and scheduling posts with ease. Boost your
+        sales and streamline your workflow with this all-in-one tool designed to help sellers optimize their business
+        effortlessly.
       </span>{' '}
-      It has been designed following Best Practices, SEO, Accessibility, Dark Mode, great Page Speed, image
-      optimization.
     </>
   ),
   callToAction: {
-    text: 'Get template',
-    href: 'https://github.com/onwidget/tailnext',
+    text: 'Sign up for free',
+    href: 'https://www.synclista.com/signup',
     icon: IconDownload,
     targetBlank: true,
   },
@@ -80,22 +75,22 @@ export const socialProofHome: SocialProofProps = {
   images: [
     {
       link: 'https://nextjs.org/',
-      src: nextJsLogo,
+      src: printifyLogo,
       alt: 'NextJs Logo',
     },
     {
       link: 'https://react.dev/',
-      src: reactLogo,
+      src: spredShirtLogo,
       alt: 'React Logo',
     },
     {
       link: 'https://tailwindcss.com/',
-      src: tailwindCssLogo,
+      src: printfulLogo,
       alt: 'Tailwind CSS Logo',
     },
     {
       link: 'https://www.typescriptlang.org/',
-      src: typescriptLogo,
+      src: gearmentLogo,
       alt: 'Typescript Logo',
     },
   ],
@@ -109,18 +104,18 @@ export const featuresHome: FeaturesProps = {
   header: {
     title: (
       <>
-        What you get with <span className="whitespace-nowrap">TailNext</span>
+        What you get with <span className="whitespace-nowrap">SyncLista</span>
       </>
     ),
     subtitle:
-      "Elevating Your Digital Presence: Discover the Synergies Unleashed in Our Platform's Core Strengths, from Seamless Integration to Open Collaboration.",
+      "Elevating Your E-commerce Experience: Unlock the Power of Our Platform's Core Features, from Effortless Product Management to Advanced Automation.",
     tagline: 'Features',
   },
   items: [
     {
-      title: 'Next.Js + Tailwind CSS Integration',
+      title: 'Automated Product Listings',
       description:
-        'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
+        'Streamline your workflow with automated product listings that save time and ensure consistency, allowing you to focus on growing your business.',
       icon: IconBrandTailwind,
       callToAction: {
         text: 'Discover now',
@@ -128,9 +123,9 @@ export const featuresHome: FeaturesProps = {
       },
     },
     {
-      title: 'Ready-to-use Components',
+      title: 'Product Design Integration',
       description:
-        'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
+        'Easily manage and upload your print-on-demand designs for custom products, making it simple to create unique, high-quality items.',
       icon: IconComponents,
       callToAction: {
         text: 'Discover now',
@@ -138,9 +133,9 @@ export const featuresHome: FeaturesProps = {
       },
     },
     {
-      title: 'Best Practices',
+      title: 'Scheduled Posting',
       description:
-        'By prioritizing maintainability and scalability through coding standards and design principles, your website stays robust and efficient.',
+        'Effortlessly schedule your product posts in advance to keep your shop active and engaging without manual intervention.',
       icon: IconListCheck,
       callToAction: {
         text: 'Discover now',
@@ -148,9 +143,9 @@ export const featuresHome: FeaturesProps = {
       },
     },
     {
-      title: 'Excellent Page Speed',
+      title: 'Optimized for Sales Growth',
       description:
-        'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
+        'Our platform is designed to optimize your product visibility, ensuring maximum exposure and sales potential through smart features.',
       icon: IconRocket,
       callToAction: {
         text: 'Discover now',
@@ -158,9 +153,9 @@ export const featuresHome: FeaturesProps = {
       },
     },
     {
-      title: 'Search Engine Optimization (SEO)',
+      title: 'SEO-Enhanced Listings',
       description:
-        "Boost online visibility with our SEO-friendly website. Effective strategies and practices enhance your website's search engine ranking, making it easier for users to find your content.",
+        "Improve your shop's discoverability with SEO-friendly product listings that help you rank higher and attract more customers.",
       icon: IconArrowsRightLeft,
       callToAction: {
         text: 'Discover now',
@@ -168,9 +163,9 @@ export const featuresHome: FeaturesProps = {
       },
     },
     {
-      title: 'Open to new ideas and contributions',
+      title: 'Open to Feedback and Collaboration',
       description:
-        'We welcome new ideas and contributions to our platform. Whether you have feature suggestions, want to contribute code, or share insights, our platform is open for collaboration.',
+        'We value your input! Share your ideas, suggestions, or contributions to help us continuously improve our platform.',
       icon: IconBulb,
       callToAction: {
         text: 'Discover now',
@@ -193,19 +188,19 @@ export const contentHomeOne: ContentProps = {
     'Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te euismod tacimates.',
   items: [
     {
-      title: 'Per ei quaeque sensibus',
+      title: 'Automated Product Listings',
       description:
-        'Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.',
+        "Automatically upload and list your products on TikTok Shop with ease, eliminating manual work and ensuring consistency in your store's appearance.",
     },
     {
-      title: 'Cu imperdiet posidonium sed',
+      title: 'Scheduled Posting',
       description:
-        'Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.',
+        'Schedule your product posts in advance, allowing you to plan and maintain a steady stream of content to engage your audience at optimal times.',
     },
     {
-      title: 'Nulla omittam sadipscing mel ne',
+      title: 'Sales Insights and Analytics',
       description:
-        'At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.',
+        'Access detailed analytics on product performance, sales trends, and customer engagement to help you make informed decisions and optimize your sales strategy.',
     },
   ],
   image: {
@@ -221,25 +216,25 @@ export const contentHomeTwo: ContentProps = {
   id: 'contentOne-on-home-two',
   hasBackground: true,
   content:
-    'Per odio fabellas consulatu cu. Utroque detracto mel ea, quo te latine theophrastus. Ea his tale nib dissentias, mei exerci tamquam euripidis cu.',
+    'Manage your promotional campaigns, including flash sales, directly from the platform. Highlight special deals and boost product visibility during high-traffic times.',
   items: [
     {
-      title: 'Per ei quaeque sensibus',
+      title: 'Promotion and Flash Sale Management',
     },
     {
-      title: 'Cu imperdiet posidonium sed',
+      title: 'Order Management',
     },
     {
-      title: 'Nulla omittam sadipscing mel ne',
+      title: 'Product Design Integration',
     },
     {
-      title: 'Per ei quaeque sensibus',
+      title: 'Bulk Product Import',
     },
     {
-      title: 'Cu imperdiet posidonium sed',
+      title: 'Real-Time Inventory Sync',
     },
     {
-      title: 'Nulla omittam sadipscing mel ne',
+      title: 'Affordable Pricing Plans',
     },
   ],
   image: {
@@ -261,25 +256,25 @@ export const stepsHome: StepsProps = {
     alt: 'Steps image',
   },
   header: {
-    title: 'Sed ac magna sit amet risus tristique interdum.',
+    title: '3 Simple Steps to Use SyncLista',
   },
   items: [
     {
-      title: 'Step 1',
+      title: 'Connect Your TikTok Shop',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.',
+        'Begin by linking your TikTok Shop to SyncLista with just a few clicks. This will allow the platform to access your store and sync products automatically.',
       icon: IconArrowDown,
     },
     {
-      title: 'Step 2',
+      title: 'Upload or Select Products',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla.',
+        'Upload your print-on-demand designs or select existing products from your catalog. SyncLista also supports bulk import to make the process faster and more efficient.',
       icon: IconArrowDown,
     },
     {
-      title: 'Step 3',
+      title: 'Schedule and Automate',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla.',
+        'Set your posting schedule or let SyncLista automatically post your products at the best times. You can also monitor your sales and performance through the dashboard.',
       icon: IconArrowDown,
     },
     {
@@ -294,14 +289,13 @@ export const testimonialsHome: TestimonialsProps = {
   hasBackground: true,
   header: {
     title: 'What our customers say about us',
-    subtitle:
-      'Etiam sed odio et dolor auctor gravida. Curabitur tincidunt elit non risus pharetra sodales. Etiam sit amet mattis massa.',
+    subtitle: 'Real feedback from business owners who trust our platform',
   },
   testimonials: [
     {
       name: 'Tayla Kirsten',
-      job: 'Marketing Manager',
-      testimonial: `I'm impressed by the speed and performance of these templates. My website now loads in the blink of an eye, significantly enhancing my visitors' experience. Thanks to TailNext, my online business is thriving.`,
+      job: 'Online Store Owner',
+      testimonial: `This tool has completely transformed the way I manage my TikTok Shop! Scheduling posts has never been easier, and my sales have noticeably increased. Highly recommended!`,
       image: {
         src: 'https://images.unsplash.com/photo-1619734086067-24bf8889ea7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
         alt: 'Tayla Kirsten',
@@ -310,8 +304,8 @@ export const testimonialsHome: TestimonialsProps = {
     },
     {
       name: 'Silver Jordan',
-      job: 'Senior Marketer',
-      testimonial: `I had never found it so easy to customize a website. TailNext's templates are incredibly flexible, and with Tailwind CSS, I've managed to give my website the look and feel I always wanted. Highly recommended!`,
+      job: 'Print-on-Demand Seller',
+      testimonial: `I love how easy it is to upload my print-on-demand designs. SyncLista has saved me so much time, and my business is growing faster than ever!`,
       image: {
         src: 'https://images.unsplash.com/photo-1565049786474-1dea82a8b995?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
         alt: 'Silver Jordan',
@@ -320,8 +314,8 @@ export const testimonialsHome: TestimonialsProps = {
     },
     {
       name: 'Kelsey Arden',
-      job: 'Co-Founder & CEO',
-      testimonial: `As a beginner in web development, I really needed clear guidance. Tailnext made it possible. I was able to install and customize my website seamlessly, and I'm thrilled with the results!`,
+      job: 'E-commerce Shop Manager',
+      testimonial: `Using this platform has been a game-changer for my TikTok Shop. The automated listings and SEO features are a huge plus for my store's visibility!`,
       image: {
         src: 'https://images.unsplash.com/photo-1659057106920-da022cfbc0cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
         alt: 'Kelsey Arden',
@@ -330,8 +324,8 @@ export const testimonialsHome: TestimonialsProps = {
     },
     {
       name: 'Sarah Johnson',
-      job: 'Business Owner',
-      testimonial: `They've not only saved me a ton of time but have also made my websites look incredibly professional. The level of detail and thought that went into designing these templates is truly impressive.`,
+      job: 'Dropshipping Specialist',
+      testimonial: `SyncLista's automated features make managing my shop so much easier. I no longer have to spend hours manually posting products.`,
       image: {
         src: 'https://images.unsplash.com/photo-1572417884940-c24659be6068?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
         alt: 'Sarah Johnson',
@@ -340,8 +334,8 @@ export const testimonialsHome: TestimonialsProps = {
     },
     {
       name: 'Keith Young',
-      job: 'Freelance Developer',
-      testimonial: `The clean code and integration with Next.js make my projects a breeze. Plus, the responsive design ensures that my clients' websites look amazing on any device. These templates have become my secret weapon for success!`,
+      job: 'Beauty Products Reseller',
+      testimonial: `The SEO enhancements have really boosted my shop's visibility, and I've noticed more organic traffic coming in. Excellent platform!`,
       image: {
         src: 'https://images.unsplash.com/photo-1694287877106-ee22f764aef1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
         alt: 'Keith Young',
@@ -350,8 +344,8 @@ export const testimonialsHome: TestimonialsProps = {
     },
     {
       name: 'Lisa Gordon',
-      job: 'Project Manager',
-      testimonial: `Their templates are not only stunning but also user-friendly. The support I received from their community has been exceptional. I'm proud to say that I've built my dream website with TailNext.`,
+      job: 'Digital Product Seller',
+      testimonial: `The product listing automation is incredibly efficient, and the support team is always open to feedback and ideas. Couldn't ask for more!`,
       image: {
         src: 'https://images.unsplash.com/photo-1665984867752-6370ab5ae35e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
         alt: 'Lisa Gordon',
@@ -367,34 +361,33 @@ export const faqs2Home: FAQsProps = {
   hasBackground: false,
   header: {
     title: 'Frequently Asked Questions',
-    subtitle:
-      'Duis turpis dui, fringilla mattis sem nec, fringilla euismod neque. Morbi tincidunt lacus nec tortor scelerisque pulvinar.',
+    subtitle: 'Your Top Questions Answered for a Seamless Experience',
     tagline: 'FAQS',
   },
   items: [
     {
-      title: 'What do I need to start?',
-      description: `Nunc mollis tempor quam, non fringilla elit sagittis in. Nullam vitae consectetur mi, a elementum arcu. Sed laoreet, ipsum et vehicula dignissim, leo orci pretium sem, ac condimentum tellus est quis ligula.`,
+      title: 'How do I get started with SyncLista?',
+      description: `To get started, simply sign up for an account, link your TikTok Shop, and follow the guided setup to start listing your products automatically.`,
     },
     {
-      title: 'How to install the NextJS + Tailwind CSS template?',
-      description: `Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer eleifend vestibulum nisl in iaculis. Mauris dictum ac purus vestibulum auctor. Praesent imperdiet lectus et massa faucibus, quis viverra massa rhoncus.`,
+      title: 'Is SyncLista compatible with print-on-demand products?',
+      description: `Yes, SyncLista supports both physical and print-on-demand products, allowing you to upload design files and manage product listings with ease.`,
     },
     {
-      title: "What's something that you completely don't understand?",
-      description: `Mauris vitae eros a dui varius luctus. Suspendisse rutrum, sapien nec blandit bibendum, justo sapien sollicitudin erat, id aliquam sapien purus quis leo. Aliquam vulputate vestibulum consectetur.`,
+      title: 'Can I schedule product posts in advance?',
+      description: `Absolutely! SyncLista lets you schedule product posts to go live at specific times, so you can plan ahead and keep your shop active.`,
     },
     {
-      title: "What's an example of when you changed your mind?",
-      description: `Nunc dapibus lacinia ipsum ut elementum. Integer in pretium sapien. Ut pretium nisl mauris, ut rutrum justo condimentum id. Etiam aliquet, arcu at iaculis laoreet, est arcu egestas sapien, eget sollicitudin odio orci et nunc.`,
+      title: 'How does SyncLista help improve my sales?',
+      description: `SyncLista optimizes your product listings for better visibility, automates tasks like scheduling posts, and ensures your shop stays active, which helps drive more sales.`,
     },
     {
-      title: 'What is something that you would really like to try again?',
-      description: `Duis in maximus mauris, id eleifend mauris. Nam a fringilla arcu. Curabitur convallis, tellus non aliquet rhoncus, lacus massa auctor eros, in interdum lectus augue sed augue. Fusce tempor ex id faucibus efficitur.`,
+      title: 'Is there a limit to how many products I can list?',
+      description: `There is no limit to the number of products you can list. SyncLista is designed to scale with your business, whether you're managing a few products or hundreds.`,
     },
     {
-      title: 'If you could only ask one question to each person you meet, what would that question be?',
-      description: `Nullam imperdiet sapien tincidunt erat dapibus faucibus. Vestibulum a sem nec lorem imperdiet scelerisque non sed lacus. Ut pulvinar id diam vitae auctor. Nam tempus, neque et elementum consectetur, ex ipsum pulvinar risus, vel sodales ligula tortor eu eros.`,
+      title: 'Does SyncLista offer SEO optimization for product listings?',
+      description: `Yes, SyncLista helps improve your shop’s search engine ranking by optimizing your product listings with SEO-friendly strategies, boosting your visibility.`,
     },
   ],
 };
@@ -405,27 +398,26 @@ export const pricingHome: PricingProps = {
   hasBackground: true,
   header: {
     title: 'Prices for each plan',
-    subtitle:
-      'Proin eget vestibulum sem, vel ultrices ligula. Vestibulum in eleifend lectus, non mollis odio. Donec nibh ipsum, suscipit non pulvinar quis, lobortis ac lorem.',
+    subtitle: 'Affordable Plans Tailored to Your Business Needs',
     // tagline: 'Pricing',
   },
   prices: [
     {
       title: 'basic',
-      price: 29,
+      price: 5,
       period: 'per month',
       items: [
         {
-          description: 'Etiam in libero, et volutpat',
+          description: 'Automated product listing',
         },
         {
-          description: 'Aenean ac nunc dolor tristique',
+          description: 'Schedule posts in advance',
         },
         {
-          description: 'Cras scelerisque accumsan lib',
+          description: 'Basic product listing management',
         },
         {
-          description: 'In hac habitasse',
+          description: 'Email support for troubleshooting',
         },
       ],
       callToAction: {
@@ -437,25 +429,25 @@ export const pricingHome: PricingProps = {
     },
     {
       title: 'standard',
-      price: 69,
+      price: 10,
       period: 'per month',
       items: [
         {
-          description: 'Proin vel laoreet',
+          description: 'All features from the $5 Plan',
         },
         {
-          description: 'Ut efficitur egestas',
+          description: 'Advanced SEO optimization for listings',
         },
         {
-          description: 'Pellentesque ut nibh',
+          description: 'Detailed product analytics',
         },
         {
-          description: 'Donec fringilla sem',
+          description: 'Priority email support with limited phone support',
         },
       ],
       callToAction: {
         targetBlank: true,
-        text: 'Free 15-day trial',
+        text: 'Free 7-day trial',
         href: '/',
       },
       hasRibbon: true,
@@ -463,25 +455,25 @@ export const pricingHome: PricingProps = {
     },
     {
       title: 'premium',
-      price: 199,
+      price: 15,
       period: 'per month',
       items: [
         {
-          description: 'Curabitur suscipit risus',
+          description: 'All features from the $10 Plan',
         },
         {
-          description: 'Aliquam blandit malesuada',
+          description: 'Personal account manager',
         },
         {
-          description: 'Suspendisse sit amet',
+          description: 'Full phone and remote support',
         },
         {
-          description: 'Suspendisse auctor dui',
+          description: 'Customized reporting and sales insights',
         },
       ],
       callToAction: {
         targetBlank: true,
-        text: 'Free 30-day trial',
+        text: 'Free 7-day trial',
         href: '/',
       },
       hasRibbon: false,
@@ -495,13 +487,12 @@ export const teamHome: TeamProps = {
   hasBackground: false,
   header: {
     title: 'Team Members',
-    subtitle:
-      'Suspendisse in dui nibh. Donec enim leo, sodales et egestas id, malesuada non diam. Sed dapibus velit et mauris condimentum, vel imperdiet erat egestas.',
+    subtitle: "Meet the Experts Behind Our Platform's Success",
     // tagline: 'Team',
   },
   teams: [
     {
-      name: 'Cindy Belcher',
+      name: 'Toni Pham LX',
       occupation: 'SEO Consultant',
       image: {
         src: 'https://images.unsplash.com/photo-1637858868799-7f26a0640eb6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
@@ -608,20 +599,19 @@ export const contactHome: ContactProps = {
   hasBackground: true,
   header: {
     title: 'Get in Touch',
-    subtitle: 'In hac habitasse platea dictumst',
+    subtitle: "We're Here to Help – Reach Out Anytime!",
     tagline: 'Contact',
   },
-  content:
-    'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec ipsum orci. Ut scelerisque sagittis ante, ac tincidunt sem venenatis ut.',
+  content: 'Our team is ready to assist you with any questions or support. Feel free to contact us anytime for help!',
   items: [
     {
       title: 'Our Address',
-      description: ['1230 Maecenas Street Donec Road', 'New York, EEUU'],
+      description: ['25275 Potrero Valley Rd #82', 'Potrero, CA 91963, USA'],
       icon: IconMapPin,
     },
     {
       title: 'Contact',
-      description: ['Mobile: +1 (123) 456-7890', 'Mail: tailnext@gmail.com'],
+      description: ['Mobile: +1 (564) 201-8560', 'Mail: admin@synclista.com'],
       icon: IconPhoneCall,
     },
     {
@@ -661,28 +651,28 @@ export const contactHome: ContactProps = {
 
 // CallToAction data *******************
 export const callToAction2Home: CallToActionProps = {
-  title: 'Next.js + Tailwind CSS',
-  subtitle:
-    'Aliquam sodales porttitor lacus ac tristique. Etiam posuere elit at leo feugiat sodales. Sed ac mauris quis sem tempor condimentum non at metus.',
+  title: 'SyncLista',
+  subtitle: 'The Ultimate Tool to Simplify and Automate Your TikTok Shop Management',
   callToAction: {
-    text: 'Get template',
-    href: 'https://github.com/onwidget/tailnext',
+    text: 'Sign up for free',
+    href: '/',
     icon: IconDownload,
   },
   items: [
     {
-      title: 'Get template',
-      description: 'Aliquam sodales est lectus, quis.',
-      href: 'https://github.com/onwidget/tailnext',
+      title: 'Sign up for free',
+      description: 'Join Us Today and Start Boosting Your Business – No Costs, No Commitments!',
+      href: '/',
     },
     {
       title: 'Learn more',
-      description: 'Class aptent taciti sociosqu ad litora torquent per conubia.',
+      description:
+        'Discover How Our Platform Can Help Elevate Your Business – Explore More Features and Benefits Today!',
       href: '/',
     },
     {
       title: 'Subscribe',
-      description: 'Morbi orci nunc, euismod ac dui id, convallis.',
+      description: 'Stay Updated with the Latest Tips, Offers, and Updates – Direct to Your Inbox!',
       form: {
         icon: IconMail,
         input: {

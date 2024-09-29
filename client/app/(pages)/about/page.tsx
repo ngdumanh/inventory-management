@@ -32,16 +32,16 @@ const Page = () => {
   return (
     <>
       <Hero2 {...hero2About} />
-      <Stats {...statsAbout} />
+      {/* <Stats {...statsAbout} /> */}
       <Features4 {...featuresFourAbout} />
       <Features4 {...featuresFourAboutTwo} />
-      <Steps {...stepsAbout} />
-      <Features3 {...features3About} />
+      {/* <Steps {...stepsAbout} /> */}
+      {/* <Features3 {...features3About} />
       <Features {...featuresAbout} />
       <Team2 {...teamAbout} />
       <Testimonials2 {...testimonials2About} />
       <FAQs {...faqsAbout} />
-      <Contact {...contactAbout} />
+      <Contact {...contactAbout} /> */}
     </>
   );
 };

@@ -38,10 +38,10 @@ import {
 
 // Hero2 data on About page *******************
 export const hero2About: HeroProps = {
-  title: 'Great companies are made by great people',
+  title: 'Great People, Great Solutions',
   subtitle:
-    'Vivamus venenatis, lectus a pellentesque placerat, felis tellus ultrices eros, et aliquam sapien nibh sed sem. Fusce ut ante eget purus viverra malesuada. Morbi eget mi maximus, ultricies urna eget, tristique lorem. Fusce cursus venenatis quam, a blandit lectus vulputate id. Praesent id interdum orci, vitae condimentum dui.',
-  tagline: 'About Us Demo Page',
+    'At SyncLista, we believe that great companies are built by great people. Our team is passionate about helping businesses simplify TikTok Shop management. Whether it’s automating product listings or optimizing sales strategies, we’re committed to making your business thrive with innovative solutions.',
+  tagline: 'About Us',
   callToAction: {
     text: 'View jobs',
     href: 'https://www.linkedin.com/',
@@ -63,20 +63,20 @@ export const statsAbout: StatsProps = {
   hasBackground: true,
   items: [
     {
-      title: 13269,
-      description: 'Downloads',
+      title: 956,
+      description: 'Users',
     },
     {
       title: 24.8,
       description: 'Stars',
     },
     {
-      title: 1767.77,
+      title: 176.77,
       description: 'Forks',
     },
     {
-      title: 484000,
-      description: 'Users',
+      title: 48400,
+      description: 'Comments',
     },
   ],
 };
@@ -88,7 +88,7 @@ export const featuresFourAbout: FeaturesProps = {
   header: {
     title: 'Our mission',
     subtitle:
-      'Quisque laoreet nisi et lectus consectetur, at placerat libero dictum. Donec sed hendrerit turpis. Nunc vel nibh blandit, hendrerit turpis non, mattis magna. Duis feugiat dui mi, eget iaculis ligula gravida congue. Nam quis mauris id eros imperdiet imperdiet. In et dolor non nisi vestibulum rhoncus nec eget dolor.',
+      'To empower e-commerce entrepreneurs by providing user-friendly tools that streamline operations, enhance visibility, and drive growth.',
     tagline: 'Mission and Values',
   },
 };
@@ -99,41 +99,43 @@ export const featuresFourAboutTwo: FeaturesProps = {
   hasBackground: false,
   header: {
     title: 'Our values',
-    subtitle: 'Etiam tellus tortor, mattis id mauris et, lobortis ullamcorper nunc.',
+    subtitle: 'Guiding Principles That Drive Our Commitment to Innovation and Excellence',
   },
   isAfterContent: true,
   columns: 2,
   items: [
     {
-      title: 'Customer-centricity',
-      description: 'Nullam non sodales massa. Ut justo neque, elementum et vehicula vel, pellentesque non orci.',
+      title: 'Customer Focus',
+      description:
+        'We prioritize the needs of our customers by constantly improving our services based on their feedback.',
       icon: IconUser,
     },
     {
-      title: 'Innovation and adaptability',
+      title: 'Innovation',
       description:
-        'Etiam ornare, purus nec venenatis porttitor, velit leo convallis dui, at porttitor nibh tortor quis velit.',
+        'We continuously seek to improve our platform, bringing fresh ideas and adaptable solutions to help businesses grow.',
       icon: IconBulb,
     },
     {
-      title: 'Quality assurance',
-      description: 'Morbi sit amet arcu vitae metus molestie auctor sit amet in risus. Sed vel lacinia purus.',
+      title: 'Quality Assurance',
+      description: 'Every feature we build is designed to maintain high standards of reliability and performance.',
       icon: IconThumbUp,
     },
     {
-      title: 'Accessibility and customization',
-      description: 'Phasellus id cursus urna. Nullam feugiat tellus sed euismod venenatis.',
+      title: 'Accessibility',
+      description:
+        'We strive to make our tools easy to use for businesses of all sizes, offering flexible customization options.',
       icon: IconAdjustments,
     },
     {
       title: 'Collaboration and partnership',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis.',
+      description: 'We value partnerships and teamwork, both internally and with our customers.',
       icon: IconHeartHandshake,
     },
     {
-      title: 'Ethical and responsible design',
-      description: 'Maecenas urna augue, commodo vitae lectus euismod, tempor aliquam arcu.',
+      title: 'Customer Success',
+      description:
+        'Our customers’ success is our success. We are dedicated to helping every user achieve their goals with the tools and support they need.',
       icon: IconHomeEco,
     },
   ],
