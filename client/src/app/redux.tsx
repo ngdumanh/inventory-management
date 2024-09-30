@@ -1,10 +1,11 @@
-import { ReactNode, useMemo } from 'react'
+import { useMemo } from 'react'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { TypedUseSelectorHook, useDispatch, useSelector, Provider } from 'react-redux'
-import globalReducer from '@/state'
-import { api } from '@/state/api'
+import { useDispatch, useSelector, Provider } from 'react-redux'
 import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
+
+import globalReducer from '@/state'
+import { api } from '@/state/api'
 import { loadState } from '@/state/localStorage'
 
 /* REDUX PERSISTENCE */
