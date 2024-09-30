@@ -1,81 +1,25 @@
 module.exports = {
-  extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'plugin:import/recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'plugin:prettier/recommended'
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module'
+  },
+  plugins: ['@typescript-eslint', 'import'],
   rules: {
-    'jsx-a11y/alt-text': 'off',
-    'react/display-name': 'off',
-    'react/no-children-prop': 'off',
-    '@next/next/no-img-element': 'off',
-    '@next/next/no-page-custom-font': 'off',
     '@typescript-eslint/consistent-type-imports': 'error',
-    '@typescript-eslint/ban-ts-comment': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    'lines-around-comment': [
-      'error',
-      {
-        beforeBlockComment: true,
-        beforeLineComment: true,
-        allowBlockStart: true,
-        allowObjectStart: true,
-        allowArrayStart: true
-      }
-    ],
-    'padding-line-between-statements': [
-      'error',
-      {
-        blankLine: 'any',
-        prev: 'export',
-        next: 'export'
-      },
-      {
-        blankLine: 'always',
-        prev: ['const', 'let', 'var'],
-        next: '*'
-      },
-      {
-        blankLine: 'any',
-        prev: ['const', 'let', 'var'],
-        next: ['const', 'let', 'var']
-      },
-      {
-        blankLine: 'always',
-        prev: '*',
-        next: ['function', 'multiline-const', 'multiline-block-like']
-      },
-      {
-        blankLine: 'always',
-        prev: ['function', 'multiline-const', 'multiline-block-like'],
-        next: '*'
-      }
-    ],
-    'newline-before-return': 'error',
-    'import/newline-after-import': [
-      'error',
-      {
-        count: 1
-      }
-    ],
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], ['object', 'unknown']],
+        groups: [['builtin', 'external', 'internal']],
         pathGroups: [
-          {
-            pattern: 'react',
-            group: 'external',
-            position: 'before'
-          },
-          {
-            pattern: 'next/**',
-            group: 'external',
-            position: 'before'
-          },
-          {
-            pattern: '~/**',
-            group: 'external',
-            position: 'before'
-          },
           {
             pattern: '@/**',
             group: 'internal'
@@ -100,7 +44,15 @@ module.exports = {
           '{}': false
         }
       }
-    ]
+    ],
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: '*', next: 'return' },
+      { blankLine: 'always', prev: 'import', next: '*' },
+      { blankLine: 'any', prev: 'import', next: 'import' }
+    ],
+    'lines-around-comment': ['error', { beforeBlockComment: true, beforeLineComment: true }],
+    'newline-before-return': 'error'
   },
   settings: {
     react: {
@@ -112,17 +64,9 @@ module.exports = {
     'import/resolver': {
       node: {},
       typescript: {
-        project: './tsconfig.json'
+        alwaysTryTypes: true,
+        project: './client'
       }
     }
-  },
-  overrides: [
-    {
-      files: ['*.ts', '*.tsx', 'src/iconify-bundle/*'],
-      rules: {
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        '@typescript-eslint/no-var-requires': 'off'
-      }
-    }
-  ]
+  }
 }
