@@ -5,7 +5,6 @@ import globalReducer from '@/state'
 import { api } from '@/state/api'
 import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
-
 import { loadState } from '@/state/localStorage'
 
 /* REDUX PERSISTENCE */
