@@ -84,6 +84,9 @@ const HorizontalMenu = () => {
         <MenuItem href='/about' icon={<i className='tabler-info-circle' />}>
           About
         </MenuItem>
+        <MenuItem href='/pricing' icon={<i className='tabler-info-circle' />}>
+          Price
+        </MenuItem>
       </Menu>
       {/* <Menu
         rootStyles={menuRootStyles(theme)}
