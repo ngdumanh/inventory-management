@@ -1,6 +1,6 @@
-import { useMemo } from 'react'
+import { ReactNode, useMemo } from 'react'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { useDispatch, useSelector, Provider } from 'react-redux'
+import { useDispatch, useSelector, Provider, TypedUseSelectorHook } from 'react-redux'
 import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
