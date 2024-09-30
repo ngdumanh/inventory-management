@@ -27,6 +27,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
@@ -35,10 +36,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.vscode
-
-package-lock.json
-
-public/sitemap.xml
-public/sitemap-0.xml
-public/robots.txt
+# icon generated file
+src/assets/iconify-icons/generated-icons.js
+src/assets/iconify-icons/generated-icons.css
