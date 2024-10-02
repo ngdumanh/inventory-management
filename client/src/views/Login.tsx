@@ -148,9 +148,11 @@ const Login = ({ mode }: { mode: SystemMode }) => {
       console.log('Login successful:', res)
       Cookies.set('token', res.token, { expires: 7, secure: true })
       // Vars
-      const redirectURL = searchParams.get('redirectTo') ?? '/'
+      const redirectURL = searchParams.get('redirectTo') ?? '/home'
+      console.log('redirectURL:', redirectURL)
+      console.log('locale:', locale)
 
-      //router.replace(getLocalizedUrl(redirectURL, locale as Locale))
+      router.replace('/home')
     } else {
       console.error('Login failed:', res)
     }
