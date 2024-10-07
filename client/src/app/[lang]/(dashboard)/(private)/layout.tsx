@@ -3,6 +3,7 @@ import Button from '@mui/material/Button'
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
+import type { Locale } from '@/configs/i18n'
 
 // Layout Imports
 import LayoutWrapper from '@layouts/LayoutWrapper'
@@ -21,7 +22,6 @@ import ScrollToTop from '@core/components/scroll-to-top'
 // Util Imports
 import { getMode, getSystemMode } from '@core/utils/serverHelpers'
 import { i18n } from '@/configs/i18n'
-import type { Locale } from '@/configs/i18n'
 import { getDictionary } from '@/utils/getDictionary'
 import AuthGuard from '@/hocs/AuthGuard'
 
@@ -31,7 +31,7 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
   const mode = getMode()
   const systemMode = getSystemMode()
   const dictionary = await getDictionary(params.lang)
-  //console.log('dictionary', dictionary)
+
   return (
     <Providers direction={direction}>
       <AuthGuard locale={params.lang}>
