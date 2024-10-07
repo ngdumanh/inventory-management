@@ -1,3 +1,6 @@
+// External Imports
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
 
@@ -22,7 +25,6 @@ import verticalNavigationCustomStyles from '@core/styles/vertical/navigationCust
 import verticalMenuItemStyles from '@core/styles/vertical/menuItemStyles'
 import verticalMenuSectionStyles from '@core/styles/vertical/menuSectionStyles'
 import type { getDictionary } from '@/utils/getDictionary'
-import { useParams } from 'next/navigation'
 
 type RenderExpandIconProps = {
   level?: number
