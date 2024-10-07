@@ -28,7 +28,7 @@ const RootLayout = ({ children, params }: ChildrenType & { params: { lang: Local
   // Vars
   const direction = i18n.langDirection[params.lang]
   const headersList = headers()
-  //console.log('params', params)
+
   return (
     <TranslationWrapper headersList={headersList} lang={params.lang}>
       <html id='__next' lang={params.lang} dir={direction}>
