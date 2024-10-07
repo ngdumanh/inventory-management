@@ -10,7 +10,6 @@ const LangRedirect = () => {
   const pathname = usePathname()
 
   const redirectUrl = `/${i18n.defaultLocale}${pathname}`
-  console.log('redirectUrl', redirectUrl)
 
   redirect(redirectUrl)
 }
