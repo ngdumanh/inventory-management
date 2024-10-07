@@ -1,10 +1,12 @@
-import TranslationWrapper from '@/hocs/TranslationWrapper'
+// External Imports
+import { headers } from 'next/headers'
 
 // Third-party Imports
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
+import type { Locale } from '@/configs/i18n'
 
 // Style Imports
 import '@/app/globals.css'
@@ -12,10 +14,9 @@ import '@/app/globals.css'
 // Generated Icon CSS Imports
 import '@assets/iconify-icons/generated-icons.css'
 
+// Internal Imports
+import TranslationWrapper from '@/hocs/TranslationWrapper'
 import { i18n } from '@/configs/i18n'
-import { headers } from 'next/headers'
-import type { Locale } from '@/configs/i18n'
-
 export const metadata = {
   title: 'Vuexy - MUI Next.js Admin Dashboard Template',
   description:
