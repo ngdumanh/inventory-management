@@ -12,7 +12,6 @@ import { styled, useColorScheme, useTheme } from '@mui/material/styles'
 // Type Imports
 import type { getDictionary } from '@/utils/getDictionary'
 import type { Mode, SystemMode } from '@core/types'
-import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu/vertical-menu'

@@ -1,3 +1,5 @@
+import { useParams } from 'next/navigation'
+
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
 
@@ -19,9 +21,7 @@ import StyledVerticalNavExpandIcon from '@menu/styles/vertical/StyledVerticalNav
 // Style Imports
 import menuItemStyles from '@core/styles/vertical/menuItemStyles'
 import menuSectionStyles from '@core/styles/vertical/menuSectionStyles'
-
 import type { getDictionary } from '@/utils/getDictionary'
-import { useParams } from 'next/navigation'
 
 type RenderExpandIconProps = {
   open?: boolean
