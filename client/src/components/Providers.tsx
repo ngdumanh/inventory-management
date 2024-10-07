@@ -23,7 +23,7 @@ const Providers = (props: Props) => {
   const mode = getMode()
   const settingsCookie = getSettingsFromCookie()
   const systemMode = getSystemMode()
-  //console.log('children:', children)
+
   return (
     <NextAuthProvider basePath={process.env.NEXTAUTH_BASEPATH}>
       <VerticalNavProvider>
