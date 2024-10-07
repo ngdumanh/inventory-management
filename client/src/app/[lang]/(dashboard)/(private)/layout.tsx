@@ -20,13 +20,9 @@ import ScrollToTop from '@core/components/scroll-to-top'
 
 // Util Imports
 import { getMode, getSystemMode } from '@core/utils/serverHelpers'
-
 import { i18n } from '@/configs/i18n'
-import { headers } from 'next/headers'
 import type { Locale } from '@/configs/i18n'
-
 import { getDictionary } from '@/utils/getDictionary'
-
 import AuthGuard from '@/hocs/AuthGuard'
 
 const Layout = async ({ children, params }: ChildrenType & { params: { lang: Locale } }) => {
