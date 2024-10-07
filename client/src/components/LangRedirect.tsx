@@ -11,6 +11,7 @@ const LangRedirect = () => {
 
   const redirectUrl = `/${i18n.defaultLocale}${pathname}`
   console.log('redirectUrl', redirectUrl)
+
   redirect(redirectUrl)
 }
 

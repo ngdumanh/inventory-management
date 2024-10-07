@@ -17,6 +17,7 @@ import '@assets/iconify-icons/generated-icons.css'
 // Internal Imports
 import TranslationWrapper from '@/hocs/TranslationWrapper'
 import { i18n } from '@/configs/i18n'
+
 export const metadata = {
   title: 'Vuexy - MUI Next.js Admin Dashboard Template',
   description:
