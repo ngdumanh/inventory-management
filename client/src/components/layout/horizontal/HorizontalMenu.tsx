@@ -22,6 +22,9 @@ import verticalNavigationCustomStyles from '@core/styles/vertical/navigationCust
 import verticalMenuItemStyles from '@core/styles/vertical/menuItemStyles'
 import verticalMenuSectionStyles from '@core/styles/vertical/menuSectionStyles'
 
+import type { getDictionary } from '@/utils/getDictionary'
+import { useParams } from 'next/navigation'
+
 type RenderExpandIconProps = {
   level?: number
 }
@@ -43,13 +46,14 @@ const RenderVerticalExpandIcon = ({ open, transitionDuration }: RenderVerticalEx
   </StyledVerticalNavExpandIcon>
 )
 
-const HorizontalMenu = () => {
-  // Hooks
+const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   const verticalNavOptions = useVerticalNav()
   const theme = useTheme()
+  const params = useParams()
 
   // Vars
   const { transitionDuration } = verticalNavOptions
+  const { lang: locale } = params
 
   return (
     <HorizontalNav
@@ -78,17 +82,11 @@ const HorizontalMenu = () => {
           menuSectionStyles: verticalMenuSectionStyles(verticalNavOptions, theme)
         }}
       >
-        <MenuItem href='/' icon={<i className='tabler-smart-home' />}>
-          DASHBOARD
+        <MenuItem href={`/${locale}/`} icon={<i className='tabler-smart-home' />}>
+          {dictionary['navigation'].home}
         </MenuItem>
-        <MenuItem href='/about' icon={<i className='tabler-shopping-cart' />}>
-          ORDER
-        </MenuItem>
-        <MenuItem href='/pricing' icon={<i className='tabler-user' />}>
-          ACCOUNT
-        </MenuItem>
-        <MenuItem href='/pricing' icon={<i className='tabler-truck' />}>
-          STORE
+        <MenuItem href={`/${locale}/about`} icon={<i className='tabler-info-circle' />}>
+          {dictionary['navigation'].about}
         </MenuItem>
       </Menu>
       {/* <Menu

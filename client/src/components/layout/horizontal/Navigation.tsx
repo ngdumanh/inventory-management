@@ -15,6 +15,8 @@ import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 // Util Imports
 import { horizontalLayoutClasses } from '@layouts/utils/layoutClasses'
 
+import type { getDictionary } from '@/utils/getDictionary'
+
 type StyledDivProps = {
   isContentCompact: boolean
   isBreakpointReached?: boolean
@@ -36,7 +38,7 @@ const StyledDiv = styled.div<StyledDivProps>`
   `}
 `
 
-const Navigation = () => {
+const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
   const { settings } = useSettings()
   const { isBreakpointReached } = useHorizontalNav()
@@ -57,7 +59,7 @@ const Navigation = () => {
           className: classnames(horizontalLayoutClasses.navigationContentWrapper, 'flex items-center is-full plb-2')
         })}
       >
-        <HorizontalMenu />
+        <HorizontalMenu dictionary={dictionary} />
       </StyledDiv>
     </div>
   )

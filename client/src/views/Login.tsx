@@ -30,6 +30,7 @@ import classnames from 'classnames'
 
 // Type Imports
 import type { SystemMode } from '@core/types'
+import type { Locale } from '@/configs/i18n'
 
 // Component Imports
 import Logo from '@components/layout/shared/Logo'
@@ -43,10 +44,7 @@ import { useImageVariant } from '@core/hooks/useImageVariant'
 import { useSettings } from '@core/hooks/useSettings'
 
 // Util Imports
-import { useLoginMutation } from '@/state/api'
-import { login } from '@/state/apiService'
-
-import Cookies from 'js-cookie'
+import { getLocalizedUrl } from '@/utils/i18n'
 
 // Styled Custom Components
 const LoginIllustration = styled('img')(({ theme }) => ({
@@ -129,32 +127,26 @@ const Login = ({ mode }: { mode: SystemMode }) => {
     borderedDarkIllustration
   )
 
-  // const [login, { isLoading, error }] = useLoginMutation()
-
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
-    console.log('email: ', data.email)
-    console.log('password: ', data.password)
+    const res = await signIn('credentials', {
+      email: data.email,
+      password: data.password,
+      redirect: false
+    })
 
-    const res = await login(data.email, data.password)
-    // const res = await signIn('credentials', {
-    //   email: data.email,
-    //   password: data.password,
-    //   redirect: false
-    // })
-
-    if (res && res.token) {
-      console.log('Login successful:', res)
-      Cookies.set('token', res.token, { expires: 7, secure: true })
+    if (res && res.ok && res.error === null) {
       // Vars
-      const redirectURL = searchParams.get('redirectTo') ?? '/home'
-      console.log('redirectURL:', redirectURL)
-      console.log('locale:', locale)
+      const redirectURL = searchParams.get('redirectTo') ?? '/'
 
-      router.replace('/home')
+      router.replace(getLocalizedUrl(redirectURL, locale as Locale))
     } else {
-      console.error('Login failed:', res)
+      if (res?.error) {
+        const error = JSON.parse(res.error)
+
+        setErrorState(error)
+      }
     }
   }
 
@@ -247,7 +239,12 @@ const Login = ({ mode }: { mode: SystemMode }) => {
             />
             <div className='flex justify-between items-center gap-x-3 gap-y-1 flex-wrap'>
               <FormControlLabel control={<Checkbox defaultChecked />} label='Remember me' />
-              <Typography className='text-end' color='primary' component={Link} href={''}>
+              <Typography
+                className='text-end'
+                color='primary'
+                component={Link}
+                href={getLocalizedUrl('/forgot-password', locale as Locale)}
+              >
                 Forgot password?
               </Typography>
             </div>
@@ -256,20 +253,11 @@ const Login = ({ mode }: { mode: SystemMode }) => {
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>New on our platform?</Typography>
-              <Typography component={Link} href={''} color='primary'>
+              <Typography component={Link} href={getLocalizedUrl('/register', locale as Locale)} color='primary'>
                 Create an account
               </Typography>
             </div>
             <Divider className='gap-2'>or</Divider>
-            <Button
-              color='secondary'
-              className='self-center text-textPrimary'
-              startIcon={<img src='/images/logos/google.png' alt='Google' width={22} />}
-              sx={{ '& .MuiButton-startIcon': { marginInlineEnd: 3 } }}
-              onClick={() => signIn('google')}
-            >
-              Sign in with Google
-            </Button>
           </form>
         </div>
       </div>

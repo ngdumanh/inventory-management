@@ -118,18 +118,10 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.ts', '*.tsx', 'src/iconify-bundle/*', 'src/state/redux.tsx'],
+      files: ['*.ts', '*.tsx', 'src/iconify-bundle/*'],
       rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-        '@typescript-eslint/consistent-type-imports': 'off',
-        '@typescript-eslint/no-unused-vars': 'off',
-        'lines-around-comment': 'off',
-        'padding-line-between-statements': 'off',
-        'newline-before-return': 'off',
-        'import/newline-after-import': 'off',
-        'import/order': 'off',
-        '@typescript-eslint/ban-types': 'off'
+        '@typescript-eslint/no-var-requires': 'off'
       }
     }
   ]

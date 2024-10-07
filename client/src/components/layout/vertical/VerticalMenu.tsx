@@ -20,12 +20,16 @@ import StyledVerticalNavExpandIcon from '@menu/styles/vertical/StyledVerticalNav
 import menuItemStyles from '@core/styles/vertical/menuItemStyles'
 import menuSectionStyles from '@core/styles/vertical/menuSectionStyles'
 
+import type { getDictionary } from '@/utils/getDictionary'
+import { useParams } from 'next/navigation'
+
 type RenderExpandIconProps = {
   open?: boolean
   transitionDuration?: VerticalMenuContextProps['transitionDuration']
 }
 
 type Props = {
+  dictionary: Awaited<ReturnType<typeof getDictionary>>
   scrollMenu: (container: any, isPerfectScrollbar: boolean) => void
 }
 
@@ -35,10 +39,12 @@ const RenderExpandIcon = ({ open, transitionDuration }: RenderExpandIconProps) =
   </StyledVerticalNavExpandIcon>
 )
 
-const VerticalMenu = ({ scrollMenu }: Props) => {
+const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
   // Hooks
   const theme = useTheme()
+  const params = useParams()
   const verticalNavOptions = useVerticalNav()
+  const { lang: locale } = params
 
   // Vars
   const { isBreakpointReached, transitionDuration } = verticalNavOptions
@@ -68,11 +74,11 @@ const VerticalMenu = ({ scrollMenu }: Props) => {
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
       >
-        <MenuItem href='/home' icon={<i className='tabler-smart-home' />}>
-          Home
+        <MenuItem href={`/${locale}/home`} icon={<i className='tabler-smart-home' />}>
+          {dictionary['navigation'].home}
         </MenuItem>
-        <MenuItem href='/about' icon={<i className='tabler-info-circle' />}>
-          About
+        <MenuItem href={`/${locale}/about`} icon={<i className='tabler-info-circle' />}>
+          {dictionary['navigation'].about}
         </MenuItem>
       </Menu>
       {/* <Menu
