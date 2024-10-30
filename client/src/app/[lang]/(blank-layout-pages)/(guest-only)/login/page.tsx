@@ -13,15 +13,19 @@ export const metadata: Metadata = {
 }
 
 const LoginPage = () => {
-  // log test
-  console.log('LoginPage')
+  try {
+    // log test
+    console.log('LoginPage')
 
-  console.log('getServerMode')
+    // Vars
+    const mode = getServerMode()
 
-  // Vars
-  const mode = getServerMode()
+    console.log('getServerMode mode', mode)
 
-  return <Login mode={mode} />
+    return <Login mode={mode} />
+  } catch (catchError: any) {
+    return { message: catchError.message, statusCode: 500 }
+  }
 }
 
 export default LoginPage
