@@ -52,7 +52,11 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
     catch (err) {
         console.error(err);
-        res.status(500).json({ message: "Something went wrong" });
+        res
+            .status(500)
+            .json({
+            message: "Server src/controllers/auth.ts - Something went wrong",
+        });
     }
 });
 exports.login = login;

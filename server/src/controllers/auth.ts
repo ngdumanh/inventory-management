@@ -41,6 +41,10 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     res.status(200).json({ result: userWithoutPassword, token });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Something went wrong" });
+    res
+      .status(500)
+      .json({
+        message: "Server src/controllers/auth.ts - Something went wrong",
+      });
   }
 };

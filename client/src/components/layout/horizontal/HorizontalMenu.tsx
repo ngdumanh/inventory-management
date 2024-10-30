@@ -1,15 +1,19 @@
-// External Imports
+// Next Imports
 import { useParams } from 'next/navigation'
 
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
 
 // Type Imports
+import type { getDictionary } from '@/utils/getDictionary'
 import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
 
 // Component Imports
-import HorizontalNav, { Menu, MenuItem } from '@menu/horizontal-menu'
+import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
+import CustomChip from '@core/components/mui/Chip'
+
+// import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
@@ -24,7 +28,9 @@ import menuRootStyles from '@core/styles/horizontal/menuRootStyles'
 import verticalNavigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
 import verticalMenuItemStyles from '@core/styles/vertical/menuItemStyles'
 import verticalMenuSectionStyles from '@core/styles/vertical/menuSectionStyles'
-import type { getDictionary } from '@/utils/getDictionary'
+
+// Menu Data Imports
+// import menuData from '@/data/navigation/horizontalMenuData'
 
 type RenderExpandIconProps = {
   level?: number
@@ -48,6 +54,7 @@ const RenderVerticalExpandIcon = ({ open, transitionDuration }: RenderVerticalEx
 )
 
 const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
+  // Hooks
   const verticalNavOptions = useVerticalNav()
   const theme = useTheme()
   const params = useParams()
@@ -83,12 +90,14 @@ const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof 
           menuSectionStyles: verticalMenuSectionStyles(verticalNavOptions, theme)
         }}
       >
-        <MenuItem href={`/${locale}/`} icon={<i className='tabler-smart-home' />}>
-          {dictionary['navigation'].home}
-        </MenuItem>
-        <MenuItem href={`/${locale}/about`} icon={<i className='tabler-info-circle' />}>
-          {dictionary['navigation'].about}
-        </MenuItem>
+        <SubMenu label={dictionary['navigation'].dashboards} icon={<i className='tabler-smart-home' />}>
+          <MenuItem href={`/${locale}/dashboards/store`} icon={<i className='tabler-school' />}>
+            {dictionary['navigation'].store}
+          </MenuItem>
+          <MenuItem href={`/${locale}/dashboards/crm`} icon={<i className='tabler-chart-pie-2' />}>
+            {dictionary['navigation'].crm}
+          </MenuItem>
+        </SubMenu>
       </Menu>
       {/* <Menu
         rootStyles={menuRootStyles(theme)}

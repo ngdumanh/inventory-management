@@ -1,6 +1,9 @@
 {
   "navigation": {
     "home": "Trang chủ",
-    "about": "Thông tin"
+    "about": "Thông tin",
+    "dashboards": "Dashboards",
+    "crm": "CRM",
+    "store": "Store"
   }
 }

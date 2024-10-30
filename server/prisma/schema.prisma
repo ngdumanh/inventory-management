@@ -4,6 +4,10 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// cach update db
+// npx prisma migrate dev --name init
+// npx prisma generate
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,12 +17,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  USER
+  ADMIN
+  SUPERADMIN
+}
+enum OrderStatus {
+  UNPAID
+  ON_HOLD
+  AWAITING_SHIPMENT
+  AWAITING_COLLECTION
+  IN_TRANSIT
+  DELIVERED
+  COMPLETED
+  CANCELLED
+}
+
 model User {
   id         Int       @id @default(autoincrement())
   email      String    @unique
   password   String
   name       String
   joinedDate DateTime  @default(now())
+  role       Role      @default(USER)
   stores     Store[]
 }
 
@@ -36,7 +57,12 @@ model Store {
   products      Product[]
   orders        Order[]
   warehouses    Warehouse[]
-  subscription  Subscription?
+  subscription  Subscription? @relation(fields: [subscriptionid], references: [id])
+subscriptionid Int?
+  startDate     DateTime
+  expireDate    DateTime
+  apiServiceId Int
+  apiService   APIServices @relation(fields: [apiServiceId], references: [id])
 }
 
 model Product {
@@ -48,11 +74,11 @@ model Product {
 }
 
 model Order {
-  id          Int       @id @default(autoincrement())
+  id          Int          @id @default(autoincrement())
   trackingId  String
-  status      String
-  storeId   Int
-  account     Store   @relation(fields: [storeId], references: [id])
+  status      OrderStatus
+  storeId     Int
+  account     Store        @relation(fields: [storeId], references: [id])
 }
 
 model Warehouse {
@@ -60,16 +86,25 @@ model Warehouse {
   name      String
   address   String
   storeId   Int
+  default   Boolean   @default(false)
   store     Store     @relation(fields: [storeId], references: [id])
 }
 
+model APIServices {
+  id        Int       @id @default(autoincrement())
+  serviceId BigInt    @unique
+  name      String
+  email     String
+  status    String
+  stores    Store[]
+}
+
 model Subscription {
-  id          Int       @id @default(autoincrement())
-  storeId     Int @unique
-  store       Store     @relation(fields: [storeId], references: [id])
-  startDate   DateTime
-  endDate     DateTime?
-  amount      Float     @default(5.0)
+  id        Int       @id @default(autoincrement())
+  name      String
+  price     Float
+  duration  Int       // Duration in months
+  stores    Store[]
 }
 
 model Marketplace {
