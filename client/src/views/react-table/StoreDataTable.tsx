@@ -229,7 +229,7 @@ const StoreDataTable = () => {
                 {
                   text: 'Delete',
                   icon: 'tabler-trash',
-                  menuItemProps: { onClick: () => setData(data?.filter(product => product.id !== row.original.id)) }
+                  menuItemProps: { onClick: () => console.log('Delete') }
                 },
                 { text: 'Duplicate', icon: 'tabler-copy' }
               ]}
