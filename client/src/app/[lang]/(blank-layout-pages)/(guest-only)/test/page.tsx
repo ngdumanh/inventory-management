@@ -1,10 +1,4 @@
-// Next Imports
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Test',
-  description: 'test page'
-}
+'use client'
 
 const TestPage = () => {
   // return test datas
