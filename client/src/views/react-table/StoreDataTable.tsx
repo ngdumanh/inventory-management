@@ -43,7 +43,6 @@ import styles from '@core/styles/table.module.css'
 // Data Imports
 import defaultData from './data'
 import { Button, IconButton } from '@mui/material'
-import { ButtonProps } from '@mui/material/Button'
 import OptionMenu from '@/@core/components/option-menu'
 import OpenDialogOnElementClick from '@/components/dialogs/OpenDialogOnElementClick'
 import EditStoreInfo from '@components/dialogs/add-edit-new-store'
@@ -275,7 +274,7 @@ const StoreDataTable = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [table.getState().columnFilters[0]?.id])
 
-  const buttonProps: ButtonProps = {
+  const buttonProps = {
     className: 'max-sm:is-full is-auto',
     startIcon: <i className='tabler-plus' />,
     variant: 'contained',
