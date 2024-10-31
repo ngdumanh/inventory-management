@@ -253,7 +253,7 @@ const data: StoreInfoDataType[] = [
 ]
 
 export type DataFormatType = {
-  Store: string
+  Shop: string
   ProductInfo: string
   MoreBonusInfo: string
   Warehouse: string
@@ -275,7 +275,7 @@ const data1: DataFormatType[] = data.map(item => {
   const storeExpireTimeStyled = `<span style="color: ${expireTimeColor};">${item.storeExpireTime} (${daysRemaining} days remaining)</span>`
 
   return {
-    Store: `${item.fullName}<br>${item.email}<br>${item.post}`,
+    Shop: `${item.fullName}<br>${item.email}<br>${item.post}`,
     ProductInfo: `Total: 100<br>Live: 80<br>Pending: 10<br>Rejected: 5<br>Frozen: 3<br>Sync Time: ${new Date().toLocaleString()}`,
     MoreBonusInfo: `Store Expire Time: ${storeExpireTimeStyled}<br>Store Created Time: ${item.storeCreatedTime}<br>Scheduled Time: ${item.scheduledTime}<br>Total Order: ${item.totalOrder}`,
     Warehouse: item.warehouses

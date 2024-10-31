@@ -41,20 +41,20 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             return; // Ensure the function exits if user is not found
         }
         const isPasswordCorrect = yield bcryptjs_1.default.compare(password, existingUser.password);
+        // log
+        console.log("isPasswordCorrect", isPasswordCorrect);
         if (!isPasswordCorrect) {
             res.status(400).json({ message: "Sai mật khẩu" });
             return; // Ensure the function exits if password is incorrect
         }
-        const token = jsonwebtoken_1.default.sign({ email: existingUser.email, id: existingUser.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jsonwebtoken_1.default.sign({ email: existingUser.email, id: existingUser.id }, process.env.JWT_SECRET, { expiresIn: "24h" });
         // Create a new object without the password property
         const { password: _ } = existingUser, userWithoutPassword = __rest(existingUser, ["password"]);
         res.status(200).json({ result: userWithoutPassword, token });
     }
     catch (err) {
         console.error(err);
-        res
-            .status(500)
-            .json({
+        res.status(500).json({
             message: "Server src/controllers/auth.ts - Something went wrong",
         });
     }

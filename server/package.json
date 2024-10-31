@@ -16,6 +16,8 @@
   "dependencies": {
     "@faker-js/faker": "^9.1.0",
     "@prisma/client": "^5.20.0",
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "concurrently": "^9.0.1",
@@ -28,6 +30,7 @@
     "prisma": "^5.20.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",

@@ -1,13 +1,13 @@
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
-import StoreDataTable from '@views/react-table/StoreDataTable'
+import ShopDataTable from '@/views/react-table/ShopDataTable'
 
 const Tables = () => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <StoreDataTable />
+        <ShopDataTable />
       </Grid>
     </Grid>
   )

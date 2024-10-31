@@ -24,6 +24,10 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       password,
       existingUser.password
     );
+
+    // log
+    console.log("isPasswordCorrect", isPasswordCorrect);
+
     if (!isPasswordCorrect) {
       res.status(400).json({ message: "Sai mật khẩu" });
       return; // Ensure the function exits if password is incorrect
@@ -32,7 +36,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser.id },
       process.env.JWT_SECRET as string,
-      { expiresIn: "1h" }
+      { expiresIn: "24h" }
     );
 
     // Create a new object without the password property
@@ -41,10 +45,8 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     res.status(200).json({ result: userWithoutPassword, token });
   } catch (err) {
     console.error(err);
-    res
-      .status(500)
-      .json({
-        message: "Server src/controllers/auth.ts - Something went wrong",
-      });
+    res.status(500).json({
+      message: "Server src/controllers/auth.ts - Something went wrong",
+    });
   }
 };

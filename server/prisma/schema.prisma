@@ -5,23 +5,21 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 // cach update db
+// sudo su -
+// npm install
+// pm2 status
+// pm2 monit
 // npx prisma migrate dev --name init
 // npx prisma generate
-
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
+// npm run seed
+// git push origin main
 
 enum Role {
   USER
   ADMIN
   SUPERADMIN
 }
+
 enum OrderStatus {
   UNPAID
   ON_HOLD
@@ -33,82 +31,91 @@ enum OrderStatus {
   CANCELLED
 }
 
-model User {
-  id         Int       @id @default(autoincrement())
-  email      String    @unique
-  password   String
-  name       String
-  joinedDate DateTime  @default(now())
-  role       Role      @default(USER)
-  stores     Store[]
+datasource db {
+  provider = "postgresql" // or "mysql" or "sqlite" depending on your database
+  url      = env("DATABASE_URL")
 }
 
-model Store {
-  id            Int          @id @default(autoincrement())
-  name          String
-  storeCode     String       @unique
-  token         String
-  tokenExpiredIn DateTime
-  idTiktokShop  String       @unique
-  userId        Int
-  user          User         @relation(fields: [userId], references: [id])
-  marketplaceId Int
-  marketplace   Marketplace  @relation(fields: [marketplaceId], references: [id])
-  products      Product[]
-  orders        Order[]
-  warehouses    Warehouse[]
-  subscription  Subscription? @relation(fields: [subscriptionid], references: [id])
-subscriptionid Int?
-  startDate     DateTime
-  expireDate    DateTime
-  apiServiceId Int
-  apiService   APIServices @relation(fields: [apiServiceId], references: [id])
-}
-
-model Product {
-  id          Int       @id @default(autoincrement())
-  name        String
-  price       Float
-  accountId   Int
-  account     Store   @relation(fields: [accountId], references: [id])
-}
-
-model Order {
-  id          Int          @id @default(autoincrement())
-  trackingId  String
-  status      OrderStatus
-  storeId     Int
-  account     Store        @relation(fields: [storeId], references: [id])
+generator client {
+  provider = "prisma-client-js"
 }
 
 model Warehouse {
-  id        Int       @id @default(autoincrement())
-  name      String
-  address   String
-  storeId   Int
-  default   Boolean   @default(false)
-  store     Store     @relation(fields: [storeId], references: [id])
+  id      Int    @id @default(autoincrement())
+  name    String
+  address String
+  shop    Shop   @relation(fields: [shop_id], references: [shop_id])
+  shop_id String
 }
 
-model APIServices {
-  id        Int       @id @default(autoincrement())
-  serviceId BigInt    @unique
-  name      String
-  email     String
-  status    String
-  stores    Store[]
+model User {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  password   String
+  name       String
+  joined_date DateTime
+  role       Role
+  shops      Shop[]
 }
 
 model Subscription {
-  id        Int       @id @default(autoincrement())
-  name      String
-  price     Float
-  duration  Int       // Duration in months
-  stores    Store[]
+  id       Int    @id @default(autoincrement())
+  amount   Float
+  duration Int
+  shops    Shop[]
 }
 
 model Marketplace {
-  id        Int       @id @default(autoincrement())
-  name      String    @unique
-  stores    Store[]
+  id    Int    @id @default(autoincrement())
+  name  String
+  shops Shop[]
+}
+
+model Product {
+  id      Int    @id @default(autoincrement())
+  shop    Shop   @relation(fields: [shop_id], references: [shop_id])
+  shop_id String
+}
+
+model APIServices {
+  service_id String @id
+  name       String
+  email      String
+  status     Int
+  app_key    String
+  app_secret String
+  shops      Shop[]
+}
+
+model Order {
+  id          Int    @id @default(autoincrement())
+  tracking_id String
+  status      OrderStatus
+  shop        Shop   @relation(fields: [shop_id], references: [shop_id])
+  shop_id     String
+}
+
+model Shop {
+  shop_id                  String   @id
+  shop_name                String
+  shop_code                String
+  access_token             String
+  access_token_expire_in   DateTime
+  user                     User     @relation(fields: [user_id], references: [id])
+  user_id                  Int
+  marketplace              Marketplace @relation(fields: [marketplace_id], references: [id])
+  marketplace_id           Int
+  api_service              APIServices @relation(fields: [api_service_id], references: [service_id])
+  api_service_id           String
+  subscription_start_date  DateTime
+  subscription_expire_date DateTime
+  refresh_token            String
+  refresh_token_expire_in  DateTime
+  seller_base_region       String
+  shop_cipher              String
+  subscription             Subscription @relation(fields: [subscription_id], references: [id])
+  subscription_id          Int
+  warehouses               Warehouse[]
+  products                 Product[]
+  orders                   Order[]
 }

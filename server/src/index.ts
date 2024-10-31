@@ -13,6 +13,8 @@ declare module "express-serve-static-core" {
 
 // ROUTE IMPORTS
 import authRoutes from "./routes/auth";
+import apiServicesRoutes from "./routes/apiservices"; // Import the new route
+import tiktokRoutes from "./routes/tiktok"; // Import the new route
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -33,6 +35,8 @@ app.use(cors());
 // );
 
 app.use("/", authRoutes); // http://localhost:8000/dashboard
+app.use("/service-ids", apiServicesRoutes); // Register the new route
+app.use("/tiktok", tiktokRoutes); // Register the new route
 // app.use("/products", productRoutes); // http://localhost:8000/products
 // app.use("/users", userRoutes); // http://localhost:8000/users
 // app.use("/expenses", expenseRoutes); // http://localhost:8000/expenses
