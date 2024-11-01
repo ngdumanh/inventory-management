@@ -47,7 +47,7 @@ import OptionMenu from '@/@core/components/option-menu'
 import OpenDialogOnElementClick from '@/components/dialogs/OpenDialogOnElementClick'
 import EditShopInfo from '@/components/dialogs/add-edit-new-shop'
 import { ShopResponse } from '@/types'
-import { getServiceIds } from '@/services/apiServices' // Adjust the import path as needed
+import { getServiceIds, getShopDetails } from '@/services/apiServices' // Adjust the import path as needed
 import { useSession } from 'next-auth/react'
 
 // Column Definitions
@@ -140,14 +140,21 @@ const Filter = ({ column, table }: { column: Column<any, unknown>; table: Table<
     />
   )
 }
+export type ColumnTableDataType = {
+  Shop: string
+  ProductInfo: string
+  MoreBonusInfo: string
+  Warehouse: string
+  Status: string
+}
 
 const ShopDataTable = () => {
   // States
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [globalFilter, setGlobalFilter] = useState('')
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [shopListData, setShopListData] = useState<DataFormatType[]>(() => defaultData)
-
+  //const [shopListData, setShopListData] = useState<DataFormatType[]>(() => defaultData)
+  const [shopListData, setShopListData] = useState<ColumnTableDataType[]>([])
   // create default response shop data
   const [shopEditData, setShopEditData] = useState<ShopResponse>({
     shop_id: 'uuid',
@@ -168,10 +175,35 @@ const ShopDataTable = () => {
     shop_description: ''
   })
 
-  const { data: session, status } = useSession() // Get session data from NextAuth
+  useEffect(() => {
+    const fetchShopDetails = async () => {
+      try {
+        const shopDetails = await getShopDetails()
+        const columnData: ColumnTableDataType[] = shopDetails.map(shop => {
+          return {
+            Shop: `<strong>Owner: </strong> ${shop.owner_name}<br><strong>Shop Name: </strong> ${shop.shop_name}<br><strong>Shop ID: </strong> ${shop.shop_id}<br><strong>Shop Code: </strong> ${shop.shop_code}<br><strong>Access Token Expire In: </strong> ${shop.access_token_expire_in}`,
+            ProductInfo: `Total: 100<br>Live: 80<br>Pending: 10<br>Rejected: 5<br>Frozen: 3<br>Sync Time: 10AM`,
+            MoreBonusInfo: `Store Expire Time`,
+            Warehouse: shop.warehouses
+              .map(warehouse => `ID: ${warehouse.id}, Name: ${warehouse.name}, Status: ${warehouse.defaultStatus}`)
+              .join('<br>'),
+            Status:
+              shop.status === 1
+                ? '<div style="color: green; font-weight: bold;">Active</div>'
+                : '<div style="color: red; font-weight: bold;">Deactived</div>'
+          }
+        })
+        setShopListData(columnData)
+      } catch (error) {
+        console.error('Failed to fetch shop details:', error)
+      }
+    }
+
+    fetchShopDetails()
+  }, [])
 
   // Hooks
-  const columns = useMemo<ColumnDef<DataFormatType, any>[]>(
+  const columns = useMemo<ColumnDef<ColumnTableDataType, any>[]>(
     () => [
       {
         accessorKey: 'Shop',
@@ -302,18 +334,13 @@ const ShopDataTable = () => {
   useEffect(() => {
     const fetchServiceId = async () => {
       try {
-        if (status === 'authenticated') {
-          console.log('Session: status ', status)
-          console.log('Session:', session)
-
-          const serviceIds = await getServiceIds()
-          if (serviceIds.length > 0) {
-            setShopEditData(prevData => ({
-              ...prevData,
-              api_service_id: serviceIds[0].service_id
-            }))
-            //setData(defaultData) // Reset data to defaultData
-          }
+        const serviceIds = await getServiceIds()
+        if (serviceIds.length > 0) {
+          setShopEditData(prevData => ({
+            ...prevData,
+            api_service_id: serviceIds[0].service_id
+          }))
+          //setData(defaultData) // Reset data to defaultData
         }
       } catch (error) {
         console.error('Error fetching service_id:', error)
@@ -321,7 +348,7 @@ const ShopDataTable = () => {
     }
 
     fetchServiceId()
-  }, [status, session])
+  }, [])
 
   return (
     <Card>

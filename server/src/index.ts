@@ -13,7 +13,7 @@ declare module "express-serve-static-core" {
 
 // ROUTE IMPORTS
 import authRoutes from "./routes/auth";
-import apiServicesRoutes from "./routes/apiservices"; // Import the new route
+import apiServicesRoutes from "./routes/apiServices"; // Import the new route
 import tiktokRoutes from "./routes/tiktok"; // Import the new route
 
 /* CONFIGURATIONS */
