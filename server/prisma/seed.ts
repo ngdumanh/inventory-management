@@ -36,19 +36,30 @@ async function main() {
     });
   }
 
-  // Seed data for APIServices
-  // for (let i = 0; i < 5; i++) {
-  //   await prisma.aPIServices.create({
-  //     data: {
-  //       service_id: faker.string.uuid(),
-  //       name: faker.company.name(),
-  //       email: faker.internet.email(),
-  //       status: faker.helpers.arrayElement([0, 1]), // Assuming status is an integer
-  //       app_key: faker.string.uuid(),
-  //       app_secret: faker.string.uuid(),
-  //     },
-  //   });
-  // }
+  await prisma.aPIServices.create({
+    data: {
+      service_id: "7418140625546430251",
+      name: "61-IvanMichaelJohnson",
+      email: "nguyennhutbinh@gmail.com",
+      status: 1, // Assuming status is an integer
+      app_key: "6dt7o5taa35ra",
+      app_secret: "69644718379b7b2854f77b247b051c792c5992d7",
+    },
+  });
+
+  //Seed data for APIServices
+  for (let i = 0; i < 5; i++) {
+    await prisma.aPIServices.create({
+      data: {
+        service_id: faker.string.uuid(),
+        name: faker.company.name(),
+        email: faker.internet.email(),
+        status: faker.helpers.arrayElement([0, 1]), // Assuming status is an integer
+        app_key: faker.string.uuid(),
+        app_secret: faker.string.uuid(),
+      },
+    });
+  }
 
   // Seed data for Subscription
   for (let i = 0; i < 5; i++) {

@@ -10,6 +10,7 @@
 // pm2 status
 // pm2 monit
 // npx prisma migrate dev --name init
+// npx prisma migrate dev --create-only --name add_shop_description
 // npx prisma generate
 // npm run seed
 // git push origin main
@@ -118,4 +119,5 @@ model Shop {
   warehouses               Warehouse[]
   products                 Product[]
   orders                   Order[]
+  shop_description         String?
 }

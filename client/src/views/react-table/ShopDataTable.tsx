@@ -46,8 +46,9 @@ import { Button, IconButton } from '@mui/material'
 import OptionMenu from '@/@core/components/option-menu'
 import OpenDialogOnElementClick from '@/components/dialogs/OpenDialogOnElementClick'
 import EditShopInfo from '@/components/dialogs/add-edit-new-shop'
-import { EditShopInfoData } from '@/types'
+import { ShopResponse } from '@/types'
 import { getServiceIds } from '@/services/apiServices' // Adjust the import path as needed
+import { useSession } from 'next-auth/react'
 
 // Column Definitions
 const columnHelper = createColumnHelper<DataFormatType>()
@@ -145,43 +146,58 @@ const ShopDataTable = () => {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [globalFilter, setGlobalFilter] = useState('')
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [data, setData] = useState<DataFormatType[]>(() => defaultData)
-  const [serviceId, setServiceId] = useState<string | null>(null)
+  const [shopListData, setShopListData] = useState<DataFormatType[]>(() => defaultData)
+
+  // create default response shop data
+  const [shopEditData, setShopEditData] = useState<ShopResponse>({
+    shop_id: 'uuid',
+    shop_name: 'Sample Shop',
+    shop_code: 'SHOP123',
+    access_token: 'access_token',
+    access_token_expire_in: '',
+    user_id: 1,
+    marketplace_id: 1,
+    api_service_id: 'default_service_id',
+    subscription_start_date: '',
+    subscription_expire_date: '',
+    refresh_token: 'refresh_token',
+    refresh_token_expire_in: '',
+    seller_base_region: 'US',
+    shop_cipher: 'shop_cipher',
+    subscription_id: 1,
+    shop_description: ''
+  })
+
+  const { data: session, status } = useSession() // Get session data from NextAuth
 
   // Hooks
   const columns = useMemo<ColumnDef<DataFormatType, any>[]>(
     () => [
-      columnHelper.accessor('Shop', {
-        cell: ({
-          row: {
-            original: { Shop }
-          }
-        }) => (
+      {
+        accessorKey: 'Shop',
+        cell: ({ row: { original } }) => (
           <div>
-            <div dangerouslySetInnerHTML={{ __html: Shop }} />
+            <div dangerouslySetInnerHTML={{ __html: original.Shop }} />
             <div className='flex gap-2'>
-              <Button variant='contained' size={'small'}>
+              <Button variant='contained' size='small'>
                 Gia Hạn Token
               </Button>
-              <Button variant='contained' size={'small'}>
+              <Button variant='contained' size='small'>
                 Sync Order
               </Button>
-              <Button variant='contained' size={'small'}>
+              <Button variant='contained' size='small'>
                 Sync Payout
               </Button>
             </div>
           </div>
         ),
         header: 'SHOP'
-      }),
-      columnHelper.accessor('ProductInfo', {
-        cell: ({
-          row: {
-            original: { ProductInfo }
-          }
-        }) => <div dangerouslySetInnerHTML={{ __html: ProductInfo }} />,
+      },
+      {
+        accessorKey: 'ProductInfo',
+        cell: ({ row: { original } }) => <div dangerouslySetInnerHTML={{ __html: original.ProductInfo }} />,
         header: 'PRODUCT INFO'
-      }),
+      },
       columnHelper.accessor('MoreBonusInfo', {
         cell: ({
           row: {
@@ -241,13 +257,11 @@ const ShopDataTable = () => {
         )
       }
     ],
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
 
   const table = useReactTable({
-    data,
+    data: shopListData,
     columns,
     filterFns: {
       fuzzy: fuzzyFilter
@@ -284,13 +298,22 @@ const ShopDataTable = () => {
     children: 'Add Shop'
   }
 
-  // get service_id from API apiservices
+  //get service_id from API apiservices
   useEffect(() => {
     const fetchServiceId = async () => {
       try {
-        const serviceIds = await getServiceIds()
-        if (serviceIds.length > 0) {
-          setServiceId(serviceIds[0].service_id)
+        if (status === 'authenticated') {
+          console.log('Session: status ', status)
+          console.log('Session:', session)
+
+          const serviceIds = await getServiceIds()
+          if (serviceIds.length > 0) {
+            setShopEditData(prevData => ({
+              ...prevData,
+              api_service_id: serviceIds[0].service_id
+            }))
+            //setData(defaultData) // Reset data to defaultData
+          }
         }
       } catch (error) {
         console.error('Error fetching service_id:', error)
@@ -298,25 +321,7 @@ const ShopDataTable = () => {
     }
 
     fetchServiceId()
-  }, [])
-
-  const shopData: EditShopInfoData = {
-    shop_id: 'uuid',
-    shop_name: 'Sample Shop',
-    shop_code: 'SHOP123',
-    access_token: 'access_token',
-    access_token_expire_in: new Date(),
-    user_id: 1,
-    marketplace_id: 1,
-    api_service_id: serviceId || 'default_service_id', // Use the fetched service_id or a default value
-    subscription_start_date: new Date(),
-    subscription_expire_date: new Date(),
-    refresh_token: 'refresh_token',
-    refresh_token_expire_in: new Date(),
-    seller_base_region: 'US',
-    shop_cipher: 'shop_cipher',
-    subscription_id: 1
-  }
+  }, [status, session])
 
   return (
     <Card>
@@ -329,7 +334,7 @@ const ShopDataTable = () => {
               element={Button}
               elementProps={buttonProps}
               dialog={EditShopInfo}
-              dialogData={shopData}
+              dialogData={shopEditData}
             />
 
             <DebouncedInput

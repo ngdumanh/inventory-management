@@ -249,8 +249,12 @@ const TextFieldStyled = styled(TextField)<TextFieldProps>(({ theme }) => ({
   }
 }))
 
-const CustomTextField = forwardRef((props: TextFieldProps, ref) => {
-  const { size = 'small', InputLabelProps, ...rest } = props
+type CustomTextFieldProps = TextFieldProps & {
+  maxLength?: number
+}
+
+const CustomTextField = forwardRef((props: CustomTextFieldProps, ref) => {
+  const { size = 'small', InputLabelProps, maxLength, ...rest } = props
 
   return (
     <TextFieldStyled
@@ -259,6 +263,7 @@ const CustomTextField = forwardRef((props: TextFieldProps, ref) => {
       {...rest}
       variant='filled'
       InputLabelProps={{ ...InputLabelProps, shrink: true }}
+      inputProps={{ ...rest.inputProps, maxLength }} // Pass maxLength to inputProps
     />
   )
 })

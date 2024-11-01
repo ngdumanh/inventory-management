@@ -137,7 +137,7 @@ const Login = ({ mode }: { mode: SystemMode }) => {
     })
 
     if (res && res.ok && res.error === null) {
-      console.log('Login successful:', res)
+      console.log('Login.tsx - Login successful:', res)
 
       // Vars
       const redirectURL = searchParams.get('redirectTo') ?? '/'

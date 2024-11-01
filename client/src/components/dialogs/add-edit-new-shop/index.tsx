@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // MUI Imports
 import Grid from '@mui/material/Grid'
@@ -15,60 +15,80 @@ import Typography from '@mui/material/Typography'
 // Component Imports
 import DialogCloseButton from '../DialogCloseButton'
 import CustomTextField from '@core/components/mui/TextField'
-import { EditShopInfoData } from '@/types'
+import { CreateShopRequest, ShopResponse } from '@/types'
+import { createShop } from '@/services/apiServices'
 
 type EditShopInfoProps = {
   open: boolean
   setOpen: (open: boolean) => void
-  data: EditShopInfoData
-}
-
-const initialData: EditShopInfoData = {
-  auth_code_link: '',
-  shop_id: 'uuid',
-  shop_name: 'Sample Shop',
-  shop_code: 'SHOP123',
-  access_token: 'access_token',
-  access_token_expire_in: new Date(),
-  user_id: 1,
-  marketplace_id: 1,
-  api_service_id: 'api_service_id',
-  subscription_start_date: new Date(),
-  subscription_expire_date: new Date(),
-  refresh_token: 'refresh_token',
-  refresh_token_expire_in: new Date(),
-  seller_base_region: 'US',
-  shop_cipher: 'shop_cipher',
-  subscription_id: 1
+  data: ShopResponse
+  auth_code_link: string
 }
 
 const EditShopInfo = ({ open, setOpen, data }: EditShopInfoProps) => {
   // States
-  const [userData, setShopInfo] = useState<EditShopInfoProps['data']>(data || initialData)
+  const [userData, setShopInfo] = useState<EditShopInfoProps['data']>(data)
+  const [authCodeLink, setAuthCodeLink] = useState<string>('auth_code_link')
   const [error, setError] = useState<string | null>(null)
+  const [isSuccess, setIsSuccess] = useState<boolean>(false) // State for success status
+
+  useEffect(() => {
+    setShopInfo(userData)
+    setAuthCodeLink(authCodeLink)
+  }, [data])
 
   const handleClose = () => {
     setOpen(false)
-    setShopInfo(data || initialData)
+    //setShopInfo(data)
+    //setAuthCodeLink(authCodeLink)
     setError(null)
+    setIsSuccess(false) // Reset success status on close
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
     // Validate data
     if (
       !userData.shop_name ||
       !userData.shop_id ||
       !userData.shop_code ||
       !userData.access_token ||
-      !userData.auth_code_link
+      !authCodeLink ||
+      !userData.api_service_id
     ) {
       setError('All fields are required.')
       return
     }
 
-    // Handle save logic here
-    console.log('Saved data:', userData)
-    setOpen(false)
+    try {
+      // Extract code from auth_code_link
+      const authCode = extractCodeFromUrl(authCodeLink)
+      if (!authCode) {
+        setError('Invalid auth_code_link.')
+        return
+      }
+
+      // Create request payload
+      const requestData: CreateShopRequest = {
+        api_service_id: userData.api_service_id,
+        auth_code_link: authCodeLink,
+        shop_name: userData.shop_name,
+        shop_description: userData.shop_description,
+        subscription_id: userData.subscription_id
+      }
+
+      // Call create-shop POST endpoint
+      const responseData = await createShop(requestData)
+
+      console.log('Response data:', responseData)
+      setShopInfo(responseData)
+
+      setIsSuccess(true) // Update success status
+
+      //setOpen(false)
+    } catch (error) {
+      console.error('Error creating shop:', error)
+      setError('Failed to create shop.')
+    }
   }
 
   return (
@@ -92,6 +112,7 @@ const EditShopInfo = ({ open, setOpen, data }: EditShopInfoProps) => {
       <form onSubmit={e => e.preventDefault()}>
         <DialogContent className='overflow-visible pbs-0 sm:pli-16'>
           {error && <Typography color='error'>{error}</Typography>}
+          {isSuccess && <Typography color='green'>Shop created successfully!</Typography>}
           <Grid container spacing={5}>
             <Grid item xs={12}>
               <CustomTextField
@@ -110,7 +131,8 @@ const EditShopInfo = ({ open, setOpen, data }: EditShopInfoProps) => {
                 fullWidth
                 label='Link Code Authorized'
                 placeholder='https://www.synclista.com/?app_key=6dt7o5taa35ra&code=TTP_x6MFUQAAAAAIvp7tReYvtnY21CkbT1YGkxn-JmQZrTJN2HVidtm_798OMRjujFnAWYR-K1TubjAiFNaLmCMoalCjJrpkJ76KdNqyjdn8a3MOGG6rYWVW8uFJPHlPx-hMijlotsuxp1HzKeMLCGMiMOtlnRxbTJJP1abTi_GK2TD4n3PiSIAirg&locale=en&shop_region=US'
-                onChange={e => setShopInfo({ ...userData, auth_code_link: e.target.value })}
+                onChange={e => setAuthCodeLink(e.target.value)}
+                maxLength={300}
               />
             </Grid>
           </Grid>
@@ -121,6 +143,7 @@ const EditShopInfo = ({ open, setOpen, data }: EditShopInfoProps) => {
                 label='Tên shop'
                 placeholder='JohnDoe'
                 onChange={e => setShopInfo({ ...userData, shop_name: e.target.value })}
+                maxLength={30}
               />
             </Grid>
           </Grid>
@@ -130,13 +153,22 @@ const EditShopInfo = ({ open, setOpen, data }: EditShopInfoProps) => {
                 fullWidth
                 label='Miêu tả shop'
                 placeholder='ToniPhamLX Shop'
-                value={'ToniPhamLX Store'}
+                onChange={e => setShopInfo({ ...userData, shop_description: e.target.value })}
+                maxLength={100}
               />
             </Grid>
           </Grid>
           <Grid container spacing={5}>
             <Grid item xs={12}>
-              <CustomTextField fullWidth label='Gói Thuê' placeholder='Free 5 days' defaultValue={'Free 5 days'} />
+              <CustomTextField
+                fullWidth
+                label='Gói Thuê'
+                placeholder='Free 5 days'
+                defaultValue={'Free 5 days'}
+                InputProps={{
+                  readOnly: true
+                }}
+              />
             </Grid>
           </Grid>
           <Grid container spacing={5}>
@@ -207,11 +239,14 @@ const EditShopInfo = ({ open, setOpen, data }: EditShopInfoProps) => {
           </Grid>
         </DialogContent>
         <DialogActions className='justify-center pbs-0 sm:pbe-16 sm:pli-16'>
-          <Button variant='contained' onClick={handleSave} type='submit'>
-            Submit
-          </Button>
+          {!isSuccess && (
+            <Button variant='contained' onClick={handleSave} type='submit'>
+              Submit
+            </Button>
+          )}
+
           <Button variant='tonal' color='secondary' type='reset' onClick={handleClose}>
-            Cancel
+            Close
           </Button>
         </DialogActions>
       </form>
@@ -220,3 +255,13 @@ const EditShopInfo = ({ open, setOpen, data }: EditShopInfoProps) => {
 }
 
 export default EditShopInfo
+function extractCodeFromUrl(authCodeLink: string): string | null {
+  try {
+    const url = new URL(authCodeLink)
+    const code = url.searchParams.get('code')
+    return code
+  } catch (error) {
+    console.error('Invalid URL:', error)
+    return null
+  }
+}

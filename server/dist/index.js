@@ -31,7 +31,7 @@ app.use((0, cors_1.default)());
 //   })
 // );
 app.use("/", auth_1.default); // http://localhost:8000/dashboard
-app.use("/service-ids", apiservices_1.default); // Register the new route
+app.use("/", apiservices_1.default); // Register the new route
 app.use("/tiktok", tiktok_1.default); // Register the new route
 // app.use("/products", productRoutes); // http://localhost:8000/products
 // app.use("/users", userRoutes); // http://localhost:8000/users

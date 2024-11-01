@@ -272,19 +272,18 @@ const calculateDaysRemaining = (expireTime: string): number => {
 const data1: DataFormatType[] = data.map(item => {
   const daysRemaining = calculateDaysRemaining(item.storeExpireTime)
   const expireTimeColor = daysRemaining <= 3 ? 'red' : 'green'
-  const storeExpireTimeStyled = `<span style="color: ${expireTimeColor};">${item.storeExpireTime} (${daysRemaining} days remaining)</span>`
-
+  const storeExpireTimeStyled = `<div style="color: ${expireTimeColor};">${item.storeExpireTime} (${daysRemaining} days remaining)</div>`
   return {
     Shop: `${item.fullName}<br>${item.email}<br>${item.post}`,
-    ProductInfo: `Total: 100<br>Live: 80<br>Pending: 10<br>Rejected: 5<br>Frozen: 3<br>Sync Time: ${new Date().toLocaleString()}`,
+    ProductInfo: `Total: 100<br>Live: 80<br>Pending: 10<br>Rejected: 5<br>Frozen: 3<br>Sync Time: 10AM`,
     MoreBonusInfo: `Store Expire Time: ${storeExpireTimeStyled}<br>Store Created Time: ${item.storeCreatedTime}<br>Scheduled Time: ${item.scheduledTime}<br>Total Order: ${item.totalOrder}`,
     Warehouse: item.warehouses
       .map(warehouse => `ID: ${warehouse.id}, Name: ${warehouse.name}, Status: ${warehouse.defaultStatus}`)
       .join('<br>'),
     Status:
       item.status === 1
-        ? '<span style="color: green; font-weight: bold;">Active</span>'
-        : '<span style="color: red; font-weight: bold;">Deactived</span>'
+        ? '<div style="color: green; font-weight: bold;">Active</div>'
+        : '<div style="color: red; font-weight: bold;">Deactived</div>'
   }
 })
 
